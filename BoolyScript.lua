@@ -1,19 +1,11 @@
 -- BoolyScript 
--- Author: OxiGen#1337
--- Version: Nightfall
+-- 作者: OxiGen#1337
+-- 版本: Nightfall
 
-local BSVersion = "[Nightfall] [2.3]"
+local BSVersion = "[黄昏] [2.3]"
 local loadingStart = os.clock()
 
-system.log("INIT", "             ******         **            **          **     **    **       ")
-system.log("INIT", "            **   **     **     **     **     **      **       **  **        ")
-system.log("INIT", "           **    **    **      **    **      **     **         ****         ")
-system.log("INIT", "          ******      **       **   **       **    **           **           ")
-system.log("INIT", "         **    **     **      **    **      **    **           **            ")
-system.log("INIT", "        **    **      **    **      **    **     ********     **             ")
-system.log("INIT", "       ******           **            **        ********     **              ")
-
-system.log("INIT", string.format("BoolyScript %s is loading...", BSVersion))
+system.log("初始化", string.format("Boolylua %s 正在加载...", BSVersion))
 
 local function getScriptPath()
     local str = debug.getinfo(2, "S").source:sub(2)
@@ -35,28 +27,28 @@ local function doesFolderExist(path)
 end
 
 local function loadingFailure(reason)
-	system.log("ERROR", "Loading failed with reason: " .. reason)
+	system.log("错误", "加载失败的原因: " .. reason)
 end
 
-system.log("INIT", "Loading Lib...")
+system.log("初始化", "加载Lib...")
 
 if not doesFolderExist(getScriptPath() .. 'BoolyScript') then
-	loadingFailure("Main directory missing")
+	loadingFailure("缺少主目录")
 	return
 end
 
 if not doesFileExist(getScriptPath() .. 'BoolyScript\\Lib\\JSON.lua') then
-	loadingFailure("JSON lib missing")
+	loadingFailure("缺少 JSON 库")
 	return
 end
 
 if not doesFileExist(getScriptPath() .. 'BoolyScript\\Lib\\features.lua') then
-	loadingFailure("Features module missing")
+	loadingFailure("缺少功能模块")
 	return
 end
 
 if not doesFileExist(getScriptPath() .. 'BoolyScript\\Lib\\callbacks.lua') then
-	loadingFailure("Callbacks module missing")
+	loadingFailure("缺少回调模块")
 	return
 end
 
@@ -98,7 +90,7 @@ paths.configs.savedSwaps = paths.folders.userData .. '\\' .. 'savedSwaps.json'
 paths.configs.savedModels = paths.folders.userData .. '\\' .. 'savedModels.json'
 
 
-system.log("INIT", "Verifying required folders...")
+system.log("初始化", "验证所需文件夹...")
 
 if not doesFolderExist(paths.folders.logs) then
 	loadingFailure("Logs folder missing")
@@ -106,21 +98,21 @@ if not doesFolderExist(paths.folders.logs) then
 end
 
 if not doesFolderExist(paths.folders.userData) then
-	loadingFailure("User folder missing")
+	loadingFailure("用户文件夹丢失")
 	return
 end
 
 if not doesFolderExist(paths.folders.spammerPresets) then
-	loadingFailure("Spammer Presets folder missing")
+	loadingFailure("垃圾邮件发送者预设文件夹丢失")
 	return
 end
 
 if not doesFolderExist(paths.folders.wepLoadouts) then
-	loadingFailure("Weapon loadouts folder missing")
+	loadingFailure("武器装载文件夹丢失")
 	return
 end
 
-system.log("INIT", "Parsing json data...")
+system.log("初始化", "解析json数据...")
 
 parsedFiles = {}
 local tempFile = assert(io.open(paths.dumps.weapons, "r"))
@@ -185,52 +177,52 @@ local ESP = {
 }
 
 local doors = {
-    ["Front left"] = 0,
-    ["Front right"] = 1,
-    ["Back left"] = 2,
-    ["Back right"] = 3,
-    ["Hood"] = 4,
-    ["Trunk"] = 5,
-    ["Back"] = 6,
-    ["Back 2"] = 7
+    ["左前"] = 0,
+    ["右前"] = 1,
+    ["左后"] = 2,
+    ["右后"] = 3,
+    ["引擎盖"] = 4,
+    ["主干"] = 5,
+    ["返回"] = 6,
+    ["返回 2"] = 7
 }
 
 local windows = {
-	["Front left window"] = 0,
-	["Front right window"] = 1,
-	["Back left window"] = 2,
-	["Back right window"] = 3
+	["左前窗"] = 0,
+	["右前窗"] = 1,
+	["左后窗口"] = 2,
+	["右后窗口"] = 3
 }
 
 local modTypes = {
 	["Spoilers"] = 0,
-	["Front Bumper"] = 1,
-	["Rear Bumper"] = 2,
-	["Side Skirt"] = 3,
-	["Exhaust"] = 4,
-	["Frame"] = 5,
-	["Grille"] = 6, 
-	["Hood"] = 7,
-	["Fender"] = 8,
-	["Right Fender"] = 9,
-	["Roof"] = 10,
-	["Engine"] = 11,
-	["Brakes"] = 12,
-	["Transmission"] = 13, 
-	["Horns"] = 14,
-	["Suspension"] = 15, 
-	["Armor"] = 16,
-	["Front Wheels"] = 23,
-	["Back Wheels"] = 24,
-	["Plate Holders"] = 25,
-	["Trim Design"] = 27,
-	["Ornaments"] = 28,
-	["Dial Design"] = 30,
-	["Steering Wheel"] = 33,
-	["Shifter Leavers"] = 34,
-	["Plaques"] = 35,
-	["Hydraulics"] = 38,
-	["Livery"] = 48
+	["前保险杠"] = 1,
+	["后保险杠"] = 2,
+	["侧裙"] = 3,
+	["排气"] = 4,
+	["框架"] = 5,
+	["格栅"] = 6, 
+	["引擎盖"] = 7,
+	["挡泥板"] = 8,
+	["右挡泥板"] = 9,
+	["车顶"] = 10,
+	["引擎"] = 11,
+	["刹车"] = 12,
+	["传输"] = 13, 
+	["喇叭"] = 14,
+	["暂停"] = 15, 
+	["装甲"] = 16,
+	["前轮"] = 23,
+	["后轮"] = 24,
+	["板架"] = 25,
+	["修剪设计"] = 27,
+	["饰品"] = 28,
+	["表盘设计"] = 30,
+	["方向盘"] = 33,
+	["换档器"] = 34,
+	["牌匾"] = 35,
+	["液压"] = 38,
+	["涂装"] = 48
 }
 
 local audioFlags = {
@@ -275,12 +267,12 @@ local pedFlags = {
 }
 
 local entityProofs = {
-    "Bullet",
-    "Fire",
-    "Explosion",
-    "Collision",
-    "Melee",
-	"Steam"
+    "子弹",
+    "火",
+    "爆炸",
+    "碰撞",
+    "近战",
+	"蒸汽"
 }
 
 local languages = {
@@ -375,7 +367,7 @@ function features.add_separator(name, subID)
 	return id
 end
 
-subs.main = ui.add_main_submenu("BoolyScript")
+subs.main = ui.add_main_submenu("Booly脚本")
 
 -- NEW SECTION | ONLINE -> SELECTED PLAYER
 
@@ -383,24 +375,24 @@ subs.main = ui.add_main_submenu("BoolyScript")
 
 subs.plySub = {}
 
-subs.plySub.main = ui.add_player_submenu("BoolyScript")
+subs.plySub.main = ui.add_player_submenu("Booly脚本")
 
-options['setWaypointToPly'] = ui.add_click_option("Set waypoint", subs.plySub.main, function()
+options['setWaypointToPly'] = ui.add_click_option("设置航点", subs.plySub.main, function()
 	local coords = features.getEntityCoords(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(online.get_selected_player()))
 	HUD.SET_NEW_WAYPOINT(coords.x, coords.y)
 end)
 
-subs.plySub.esp = features.addSubmenu("ESP", subs.plySub.main)
+subs.plySub.esp = features.addSubmenu("追踪", subs.plySub.main)
 
-options['espLines'] = ui.add_bool_option("Lines", subs.plySub.esp.submenu, function(state)
+options['espLines'] = ui.add_bool_option("线", subs.plySub.esp.submenu, function(state)
 	ESP.lines[online.get_selected_player()] = state
 end)
 
-options['espBoxes'] = ui.add_bool_option("Boxes", subs.plySub.esp.submenu, function(state)
+options['espBoxes'] = ui.add_bool_option("盒子", subs.plySub.esp.submenu, function(state)
 	ESP.boxes[online.get_selected_player()] = state
 end)
 
-ui.add_color_picker("Color", subs.plySub.esp.submenu, function(color)
+ui.add_color_picker("颜色", subs.plySub.esp.submenu, function(color)
     ESP.color.red = color.r
     ESP.color.green = color.g
     ESP.color.blue = color.b
@@ -409,11 +401,11 @@ end)
 
 -- ATTACKERS
 subs.plySub.griefing = {}
-subs.plySub.griefing.main = features.addSubmenu("Griefing", subs.plySub.main)
+subs.plySub.griefing.main = features.addSubmenu("恶搞", subs.plySub.main)
 
-features.add_separator("Attackers", subs.plySub.griefing.main.submenu)
+features.add_separator("发送攻击者", subs.plySub.griefing.main.submenu)
 
-subs.plySub.griefing.settings = features.addSubmenu("Attackers settings", subs.plySub.griefing.main.submenu)
+subs.plySub.griefing.settings = features.addSubmenu("攻击者设置", subs.plySub.griefing.main.submenu)
 
 local attackersConfig = {
 	count = 1,
@@ -421,19 +413,19 @@ local attackersConfig = {
 	weapon = 2725352035
 }
 
-ui.add_click_option("Clear attackers", subs.plySub.griefing.settings.submenu, function()
+ui.add_click_option("清除攻击者", subs.plySub.griefing.settings.submenu, function()
 	features.clearAllAttackers()
 end)
 
-ui.add_num_option("Count", subs.plySub.griefing.settings.submenu, 1, 20, 1, function(num)
+ui.add_num_option("数量", subs.plySub.griefing.settings.submenu, 1, 50, 1, function(num)
 	attackersConfig.count = num	
 end)
 
-ui.add_bool_option("Invincible", subs.plySub.griefing.settings.submenu, function(state)
+ui.add_bool_option("无敌", subs.plySub.griefing.settings.submenu, function(state)
 	attackersConfig.godmode = state	
 end)
 
-subs.plySub.griefing.settings.weapon = features.addSubmenu("Weapon", subs.plySub.griefing.settings.submenu)
+subs.plySub.griefing.settings.weapon = features.addSubmenu("武器", subs.plySub.griefing.settings.submenu)
 stuff.attackersWepCategories = {}
 for _, wepInfo in ipairs(parsedFiles.weapons) do
 	if wepInfo['TranslatedLabel'] ~= nil and wepInfo['Category'] ~= nil then
@@ -454,7 +446,7 @@ for _, wepInfo in ipairs(parsedFiles.weapons) do
 	end
 end
 
-ui.add_choose("Send jets", subs.plySub.griefing.main.submenu, false, {"B-11 Strikeforce", "P-996 Lazer", "UFO"}, function(pos)
+ui.add_choose("发送喷气机", subs.plySub.griefing.main.submenu, false, {"B-11 突击队", "P-996", "UFO"}, function(pos)
 	if pos == 0 then
 		features.send_aircraft_attacker(utils.joaat("strikeforce"), -163714847, online.get_selected_player(), attackersConfig.weapon, attackersConfig.godmode, attackersConfig.count, false)
 	elseif pos == 1 then
@@ -464,7 +456,7 @@ ui.add_choose("Send jets", subs.plySub.griefing.main.submenu, false, {"B-11 Stri
 	end
 end)
 
-ui.add_choose("Send killers", subs.plySub.griefing.main.submenu, false, {"Cop", "Drunk Russian", "Robber"}, function(pos)
+ui.add_choose("派杀手", subs.plySub.griefing.main.submenu, false, {"警察", "喝醉的俄罗斯人", "强盗"}, function(pos)
 	if pos == 0 then
 		features.send_attacker(utils.joaat("CSB_Cop"), online.get_selected_player(), attackersConfig.weapon, attackersConfig.godmode, attackersConfig.count)
 	elseif pos == 1 then
@@ -474,7 +466,7 @@ ui.add_choose("Send killers", subs.plySub.griefing.main.submenu, false, {"Cop", 
 	end
 end) 
 
-ui.add_choose("Send animals", subs.plySub.griefing.main.submenu, false, {"Shepherd", "Panther", "Chop"}, function(pos)
+ui.add_choose("送动物", subs.plySub.griefing.main.submenu, false, {"牧羊犬", "豹", "Chop"}, function(pos)
 	if pos == 0 then
 		features.send_attacker_animal(utils.joaat("A_C_shepherd"), online.get_selected_player(), attackersConfig.weapon, attackersConfig.godmode, attackersConfig.count)
 	elseif pos == 1 then
@@ -484,7 +476,7 @@ ui.add_choose("Send animals", subs.plySub.griefing.main.submenu, false, {"Shephe
 	end
 end) 
 
-ui.add_choose("Send tanks", subs.plySub.griefing.main.submenu, false, {"Rhino", "Khanjali"}, function(pos)
+ui.add_choose("发送坦克", subs.plySub.griefing.main.submenu, false, {"犀牛坦克", "汗贾利"}, function(pos)
 	if pos == 0 then
 		features.send_ground_attacker(utils.joaat("RHINO"), -163714847, online.get_selected_player(), attackersConfig.weapon, attackersConfig.godmode, attackersConfig.count)
 	elseif pos == 1 then
@@ -492,9 +484,9 @@ ui.add_choose("Send tanks", subs.plySub.griefing.main.submenu, false, {"Rhino", 
 	end
 end) 
 
-subs.plySub.removals = features.addSubmenu("Removals", subs.plySub.main)
+subs.plySub.removals = features.addSubmenu("移除", subs.plySub.main)
 
-ui.add_click_option("Boolean crash", subs.plySub.removals.submenu, function()
+ui.add_click_option("布尔崩溃", subs.plySub.removals.submenu, function()
 	local ped = features.getPlayerPed(online.get_selected_player())
 	local coords = features.getEntityCoords(ped)
 	local model = utils.joaat("banshee")
@@ -507,24 +499,24 @@ ui.add_click_option("Boolean crash", subs.plySub.removals.submenu, function()
 			local maxMod = VEHICLE.GET_NUM_VEHICLE_MODS(vehicle, i)-1
 			VEHICLE.SET_VEHICLE_MOD(vehicle, i, maxMod, false)
 		end
-		features.notify(string.format("Boolean crash sent to %s", online.get_name(online.get_selected_player())))
+		features.notify(string.format("布尔崩溃发送到 %s", online.get_name(online.get_selected_player())))
 		system.yield(10000)
 		features.notify("Boolean crash finished")
 	end)
 end)
 
-ui.add_click_option("SE crash", subs.plySub.removals.submenu, function()
+ui.add_click_option("SE崩溃", subs.plySub.removals.submenu, function()
 	features.SECrash(online.get_selected_player())
 end)
 
-ui.add_click_option("SE kick", subs.plySub.removals.submenu, function()
+ui.add_click_option("SE踢", subs.plySub.removals.submenu, function()
 	features.SEKick(online.get_selected_player())
 end)
 
 subs.plySub.vehicle = {}
-subs.plySub.vehicle.main = features.addSubmenu("Vehicle", subs.plySub.main)
+subs.plySub.vehicle.main = features.addSubmenu("车辆", subs.plySub.main)
 
-ui.add_bool_option("Attach to my vehicle", subs.plySub.vehicle.main.submenu, function(state)
+ui.add_bool_option("连接到我的车辆", subs.plySub.vehicle.main.submenu, function(state)
 	local target = features.getPlayerVehicle(online.get_selected_player(), false)
 	local base = features.getLocalVehicle(false)
 	if target == nil or base == nil or target == base then return end
@@ -539,7 +531,7 @@ end)
 
 stuff.ramps = {}
 
-ui.add_choose("Attach ramp", subs.plySub.vehicle.main.submenu, false, {"Detach & delete", "Small ramp", "Big ramp"}, function(pos)
+ui.add_choose("连接坡道", subs.plySub.vehicle.main.submenu, false, {"删除", "小坡道", "大坡道"}, function(pos)
     local vehicle = features.getPlayerVehicle(online.get_selected_player(), false)
     local coords = features.getEntityCoords(vehicle)
 	local hash = utils.joaat("prop_mp_ramp_01")
@@ -562,7 +554,7 @@ ui.add_choose("Attach ramp", subs.plySub.vehicle.main.submenu, false, {"Detach &
 	end)
 end)
 
-subs.plySub.vehicle.doors = features.addSubmenu("Doors", subs.plySub.vehicle.main.submenu)
+subs.plySub.vehicle.doors = features.addSubmenu("门", subs.plySub.vehicle.main.submenu)
 
 for name, doorID in pairs(doors) do
     ui.add_bool_option(name, subs.plySub.vehicle.doors.submenu, function(state)
@@ -570,28 +562,28 @@ for name, doorID in pairs(doors) do
     end)
 end
 
-subs.plySub.vehicle.lsc = features.addSubmenu("Los Santos Customs", subs.plySub.vehicle.main.submenu)
+subs.plySub.vehicle.lsc = features.addSubmenu("洛圣都海关", subs.plySub.vehicle.main.submenu)
 
-ui.add_choose("Set tuning preset", subs.plySub.vehicle.lsc.submenu, false, {"Default", "Random", "Max", "Power"}, function(pos)
+ui.add_choose("设置改装预设", subs.plySub.vehicle.lsc.submenu, false, {"默认", "随机", "最大", "功率"}, function(pos)
 	local vehicle = features.getLocalVehicle(false)
 	features.setVehiclePreset(pos)
 end)
 
 stuff.lscOptions = {}
 
-features.add_separator("Color", subs.plySub.vehicle.lsc.submenu)
+features.add_separator("颜色", subs.plySub.vehicle.lsc.submenu)
 
-ui.add_color_picker("Primary", subs.plySub.vehicle.lsc.submenu, function(color)
+ui.add_color_picker("主要", subs.plySub.vehicle.lsc.submenu, function(color)
 	local vehicle = features.getPlayerVehicle(online.get_selected_player(), false)
 	VEHICLE.SET_VEHICLE_CUSTOM_PRIMARY_COLOUR(vehicle, color.r, color.g, color.b)
 end)
 
-ui.add_color_picker("Secondary", subs.plySub.vehicle.lsc.submenu, function(color)
+ui.add_color_picker("次要", subs.plySub.vehicle.lsc.submenu, function(color)
 	local vehicle = features.getPlayerVehicle(online.get_selected_player(), false)
 	VEHICLE.SET_VEHICLE_CUSTOM_SECONDARY_COLOUR(vehicle, color.r, color.g, color.b)
 end)
 
-features.add_separator("Main", subs.plySub.vehicle.lsc.submenu)
+features.add_separator("主要", subs.plySub.vehicle.lsc.submenu)
 
 for name, id in pairs(modTypes) do
 	stuff.lscOptions[name] = ui.add_num_option(name, subs.plySub.vehicle.lsc.submenu, 0, 1, 1, function(num)
@@ -600,24 +592,24 @@ for name, id in pairs(modTypes) do
 	end)
 end
 
-features.add_separator("Misc", subs.plySub.vehicle.lsc.submenu)
+features.add_separator("杂项", subs.plySub.vehicle.lsc.submenu)
 
-ui.add_click_option("Set bulletproof tires", subs.plySub.vehicle.lsc.submenu, function()
+ui.add_click_option("安装防弹轮胎", subs.plySub.vehicle.lsc.submenu, function()
 	local vehicle = getPlayerVehicle(online.get_selected_player(), false)
 	entities.request_control(vehicle, function()
 		VEHICLE.SET_VEHICLE_TYRES_CAN_BURST(vehicle, true)
 	end)
 end)
 
-subs.plySub.neutral = features.addSubmenu("Neutral", subs.plySub.main)
+subs.plySub.neutral = features.addSubmenu("友好", subs.plySub.main)
 
-ui.add_click_option("Copy vehicle", subs.plySub.neutral.submenu, function()
+ui.add_click_option("复制车辆", subs.plySub.neutral.submenu, function()
 	local vehicle = features.getPlayerVehicle(online.get_selected_player(), true)
 	if not features.doesEntityExist(vehicle) then features.alert("Player's vehicle doesnt exist") return end
 	features.spawnVehicleCopy(vehicle)
 end)
 
-ui.add_click_option("Copy outfit", subs.plySub.neutral.submenu, function()
+ui.add_click_option("复制服装", subs.plySub.neutral.submenu, function()
 	local ped = features.getPlayerPed(online.get_selected_player())
 	for i = 0, 11 do
 		PED.SET_PED_COMPONENT_VARIATION(PLAYER.PLAYER_PED_ID(), i, PED.GET_PED_DRAWABLE_VARIATION(ped, i), PED.GET_PED_TEXTURE_VARIATION(ped, i), PED.GET_PED_PALETTE_VARIATION(ped, i))
@@ -627,16 +619,16 @@ ui.add_click_option("Copy outfit", subs.plySub.neutral.submenu, function()
 	end
 end)
 
--- NEW SECTION | LOCAL
+-- 新栏目 | 本地
 
 subs.localSub = {}
-subs.localSub.main = features.addSubmenu("Local", subs.main)
+subs.localSub.main = features.addSubmenu("自我", subs.main)
 
-subs.localSub.health = features.addSubmenu("Health", subs.localSub.main.submenu)
+subs.localSub.health = features.addSubmenu("健康", subs.localSub.main.submenu)
 
-options["godMode"] = ui.add_bool_option("Stinky godmode", subs.localSub.health.submenu, function() end)
+options["godMode"] = ui.add_bool_option("无敌", subs.localSub.health.submenu, function() end)
 
-options['fillAllSnacks'] = ui.add_click_option("Refill all snacks", subs.localSub.health.submenu, function()
+options['fillAllSnacks'] = ui.add_click_option("补充所有零食", subs.localSub.health.submenu, function()
 	local char = features.getMpChar()
 	STATS.STAT_SET_INT(utils.joaat("MP" .. char .."_NO_BOUGHT_YUM_SNACKS"), 100, 1);
 	STATS.STAT_SET_INT(utils.joaat("MP" .. char .."_NO_BOUGHT_HEALTH_SNACKS"), 100, 1);
@@ -646,10 +638,10 @@ options['fillAllSnacks'] = ui.add_click_option("Refill all snacks", subs.localSu
 	STATS.STAT_SET_INT(utils.joaat("MP" .. char .."_NUMBER_OF_BOURGE_BOUGHT"), 100, 1);
 end)
 
-subs.localSub.proofs = features.addSubmenu("Proofs", subs.localSub.health.submenu)
+subs.localSub.proofs = features.addSubmenu("自定义无敌", subs.localSub.health.submenu)
 
 stuff.playerProofs = {}
-options['enablePlayerProofs'] = ui.add_bool_option("Enable", subs.localSub.proofs.submenu, function() end)
+options['enablePlayerProofs'] = ui.add_bool_option("启用", subs.localSub.proofs.submenu, function() end)
 features.add_separator("Proofs", subs.localSub.proofs.submenu)
 for _, name in ipairs(entityProofs) do
 	ui.add_bool_option(name, subs.localSub.proofs.submenu, function(state)
@@ -657,19 +649,19 @@ for _, name in ipairs(entityProofs) do
     end)
 end
 
-features.add_separator("Autoheal", subs.localSub.health.submenu)
+features.add_separator("自动修复", subs.localSub.health.submenu)
 
-options['ahFillHealth'] = ui.add_bool_option("Fill health", subs.localSub.health.submenu, function() end)
-options['ahFillArmor'] = ui.add_bool_option("Fill armor", subs.localSub.health.submenu, function() end)
-options['ahFillInCover'] = ui.add_bool_option("Fill in cover", subs.localSub.health.submenu, function() end)
-options['ahStep'] = ui.add_num_option("Step", subs.localSub.health.submenu, 0, 100, 10, function() end)
-options['ahCooldown'] = ui.add_num_option("Cooldown (ms)", subs.localSub.health.submenu, 0, 3000, 500, function() end)
+options['ahFillHealth'] = ui.add_bool_option("填充健康", subs.localSub.health.submenu, function() end)
+options['ahFillArmor'] = ui.add_bool_option("填充盔甲", subs.localSub.health.submenu, function() end)
+options['ahFillInCover'] = ui.add_bool_option("填写封面", subs.localSub.health.submenu, function() end)
+options['ahStep'] = ui.add_num_option("步骤", subs.localSub.health.submenu, 0, 100, 10, function() end)
+options['ahCooldown'] = ui.add_num_option("冷却时间（毫秒）", subs.localSub.health.submenu, 0, 3000, 500, function() end)
 
-subs.localSub.movement = features.addSubmenu("Movement", subs.localSub.main.submenu)
+subs.localSub.movement = features.addSubmenu("移动", subs.localSub.main.submenu)
 
-options['clumsiness'] = ui.add_bool_option("Clumsiness", subs.localSub.movement.submenu, function() end)
+options['clumsiness'] = ui.add_bool_option("笨手笨脚", subs.localSub.movement.submenu, function() end)
 
-ui.add_choose("Run speed multiplier", subs.localSub.movement.submenu, true, {"Default", "Low", "Medium", "High"}, function(pos)
+ui.add_choose("运行速度倍数", subs.localSub.movement.submenu, true, {"默认", "低", "中", "高"}, function(pos)
 	local mult = 0.0
 	if pos == 0 then mult = 1.0 end
 	if pos == 1 then mult = 1.2 end
@@ -678,7 +670,7 @@ ui.add_choose("Run speed multiplier", subs.localSub.movement.submenu, true, {"De
 	PLAYER.SET_RUN_SPRINT_MULTIPLIER_FOR_PLAYER(PLAYER.PLAYER_ID(), mult)
 end)
 
-ui.add_choose("Swim speed multiplier", subs.localSub.movement.submenu, true, {"Default", "Low", "Medium", "High"}, function(pos)
+ui.add_choose("游泳速度倍数", subs.localSub.movement.submenu, true, {"默认", "低", "中", "高"}, function(pos)
 	local mult = 0.0
 	if pos == 0 then mult = 1.0 end
 	if pos == 1 then mult = 1.2 end
@@ -687,7 +679,7 @@ ui.add_choose("Swim speed multiplier", subs.localSub.movement.submenu, true, {"D
 	PLAYER.SET_SWIM_MULTIPLIER_FOR_PLAYER(PLAYER.PLAYER_ID(), mult)
 end)
 
-ui.add_click_option("Make a poop (Nadristat)", subs.localSub.movement.submenu, function() 
+ui.add_click_option("拉便便", subs.localSub.movement.submenu, function() 
 	local ped = PLAYER.PLAYER_PED_ID()
 	local shit = utils.joaat("prop_big_shit_02")
 	local coords = features.getEntityCoords(ped)
@@ -701,15 +693,15 @@ ui.add_click_option("Make a poop (Nadristat)", subs.localSub.movement.submenu, f
 end)
 
 -- subs.localSub.animsAndScen = {}
--- subs.localSub.animsAndScen.main = features.addSubmenu("Animations & Scenarios", subs.localSub.movement.submenu)
--- subs.localSub.animsAndScen.anims = features.addSubmenu("Animations", subs.localSub.animsAndScen.main.submenu)
+-- subs.localSub.animsAndScen.main = features.addSubmenu("动画和场景", subs.localSub.movement.submenu)
+-- subs.localSub.animsAndScen.anims = features.addSubmenu("动画", subs.localSub.animsAndScen.main.submenu)
 
 subs.localSub.flags = {}
-subs.localSub.flags.main = features.addSubmenu("Flags", subs.localSub.main.submenu)
-subs.localSub.flags.audio = features.addSubmenu("Audio flags", subs.localSub.flags.main.submenu)
-subs.localSub.flags.ped = features.addSubmenu("Player flags", subs.localSub.flags.main.submenu)
+subs.localSub.flags.main = features.addSubmenu("标志", subs.localSub.main.submenu)
+subs.localSub.flags.audio = features.addSubmenu("音频标志", subs.localSub.flags.main.submenu)
+subs.localSub.flags.ped = features.addSubmenu("玩家标志", subs.localSub.flags.main.submenu)
 
-options['enableAudioFlags'] = ui.add_bool_option("Enable", subs.localSub.flags.audio.submenu, function() end)
+options['enableAudioFlags'] = ui.add_bool_option("启用", subs.localSub.flags.audio.submenu, function() end)
 features.add_separator("Flags", subs.localSub.flags.audio.submenu)
 for name, state in pairs(audioFlags) do
 	ui.add_bool_option(name, subs.localSub.flags.audio.submenu, function(state)
@@ -717,7 +709,7 @@ for name, state in pairs(audioFlags) do
 	end)
 end
 
-options['enablePlayerFlags'] = ui.add_bool_option("Enable", subs.localSub.flags.ped.submenu, function() end)
+options['enablePlayerFlags'] = ui.add_bool_option("启用", subs.localSub.flags.ped.submenu, function() end)
 features.add_separator("Flags", subs.localSub.flags.ped.submenu)
 stuff.activePedFlags = {}
 for name, state in pairs(pedFlags) do
@@ -726,145 +718,145 @@ for name, state in pairs(pedFlags) do
 	end)
 end
 
-subs.localSub.weapon = features.addSubmenu("Weapon", subs.localSub.main.submenu)
+subs.localSub.weapon = features.addSubmenu("武器", subs.localSub.main.submenu)
 
-options['deadEye'] = ui.add_bool_option("Dead eye effect", subs.localSub.weapon.submenu, function(state) end)
+options['deadEye'] = ui.add_bool_option("死亡之眼", subs.localSub.weapon.submenu, function(state) end)
 stuff.deadEyeActive = false
 
-options['becomeGangsta'] = ui.add_bool_option("Become gangsta", subs.localSub.weapon.submenu, function(state)
+options['becomeGangsta'] = ui.add_bool_option("成为黑帮", subs.localSub.weapon.submenu, function(state)
 	local ped = PLAYER.PLAYER_PED_ID()
 	if state then
-		features.note("Use default pistol. Gangsta mod displays only for you")
+		features.note("使用默认手枪。 Gangsta mod 只为你显示")
 		WEAPON.SET_WEAPON_ANIMATION_OVERRIDE(ped, utils.joaat("Gang1H"))
 	else
 		WEAPON.SET_WEAPON_ANIMATION_OVERRIDE(ped, utils.joaat("Default"))
 	end
 end)
 
-options['killKarma'] = ui.add_bool_option("Kill karma", subs.localSub.weapon.submenu, function(state) end)
-options['debugGun'] = ui.add_bool_option("Debug gun [E]", subs.localSub.weapon.submenu, function(state) end)
-options['blockGun'] = ui.add_bool_option("Block gun", subs.localSub.weapon.submenu, function(state) end)
+options['killKarma'] = ui.add_bool_option("消灭业力", subs.localSub.weapon.submenu, function(state) end)
+options['debugGun'] = ui.add_bool_option("调试枪 [E]", subs.localSub.weapon.submenu, function(state) end)
+options['blockGun'] = ui.add_bool_option("方块枪", subs.localSub.weapon.submenu, function(state) end)
 
-subs.localSub.visual = features.addSubmenu("Visual", subs.localSub.main.submenu)
+subs.localSub.visual = features.addSubmenu("视觉", subs.localSub.main.submenu)
 
-ui.add_num_option("Fake wanted level", subs.localSub.visual.submenu, 0, 6, 1, function(num)
+ui.add_num_option("假通缉等级", subs.localSub.visual.submenu, 0, 6, 1, function(num)
 	MISC.SET_FAKE_WANTED_LEVEL(num)
 end)
 
-ui.add_bool_option("Hide HUD", subs.localSub.visual.submenu, function(state)
+ui.add_bool_option("隐藏 HUD", subs.localSub.visual.submenu, function(state)
 	HUD.DISPLAY_RADAR(not state)
 end)
 
-ui.add_bool_option("Disable distant vehicles", subs.localSub.visual.submenu, function(state)
+ui.add_bool_option("禁用远处的车辆", subs.localSub.visual.submenu, function(state)
 	VEHICLE.SET_DISTANT_CARS_ENABLED(not state)
 end)
 
-options['allowPauseInOnline'] = ui.add_bool_option("Allow pause in online", subs.localSub.visual.submenu, function(state) end)
-options['allowPauseWhenDead'] = ui.add_bool_option("Allow pause when dead", subs.localSub.visual.submenu, function(state) end)
+options['allowPauseInOnline'] = ui.add_bool_option("允许在线暂停", subs.localSub.visual.submenu, function(state) end)
+options['allowPauseWhenDead'] = ui.add_bool_option("死时允许暂停", subs.localSub.visual.submenu, function(state) end)
 options['silentBST'] = ui.add_bool_option("Silent BST", subs.localSub.visual.submenu, function() end)
 
-subs.localSub.world = features.addSubmenu("World", subs.localSub.main.submenu)
+subs.localSub.world = features.addSubmenu("世界", subs.localSub.main.submenu)
 
-subs.localSub.world.clearArea = features.addSubmenu("Area cleanup", subs.localSub.world.submenu)
+subs.localSub.world.clearArea = features.addSubmenu("区域清理", subs.localSub.world.submenu)
 
-options['cleanupRadius'] = ui.add_num_option("Radius", subs.localSub.world.clearArea.submenu, 50, 1000, 50, function() end)
+options['cleanupRadius'] = ui.add_num_option("半径", subs.localSub.world.clearArea.submenu, 50, 1000, 50, function() end)
 ui.set_value(options['cleanupRadius'], 50, true)
 
-options['cleanupPeds'] = ui.add_bool_option("Peds", subs.localSub.world.clearArea.submenu, function()
+options['cleanupPeds'] = ui.add_bool_option("模型", subs.localSub.world.clearArea.submenu, function()
 	if state then features.note("Use it carefully\nMay provide a game crash") end
 end)
 
-options['cleanupVehicles'] = ui.add_bool_option("Vehicles", subs.localSub.world.clearArea.submenu, function()
+options['cleanupVehicles'] = ui.add_bool_option("车辆", subs.localSub.world.clearArea.submenu, function()
 	if state then features.note("Use it carefully\nMay provide a game crash") end
 end)
 
--- options['cleanupObjects'] = ui.add_bool_option("Objects", subs.localSub.world.clearArea.submenu, function()
+-- options['cleanupObjects'] = ui.add_bool_option("物体", subs.localSub.world.clearArea.submenu, function()
 -- 	if state then features.note("Use it carefully\nMay provide a game crash") end
 -- end)
 
 
-ui.add_choose("Blackout mode", subs.localSub.world.submenu, true, {"OFF", "ON", "ON (Affects vehs)"}, function(pos)
+ui.add_choose("Blackout mode", subs.localSub.world.submenu, true, {"关闭", "开启", "开（影响车辆)"}, function(pos)
 	GRAPHICS.SET_ARTIFICIAL_LIGHTS_STATE(pos > 0) GRAPHICS._SET_ARTIFICIAL_LIGHTS_STATE_AFFECTS_VEHICLES(pos == 2)
 end)
 
-subs.localSub.water = features.addSubmenu("Water editor", subs.localSub.world.submenu)
+subs.localSub.water = features.addSubmenu("水编辑", subs.localSub.world.submenu)
 
-ui.add_num_option("Water height", subs.localSub.water.submenu, 0, 1500, 1, function(num)
+ui.add_num_option("水高", subs.localSub.water.submenu, 0, 1500, 1, function(num)
 	local coords = features.getEntityCoords(PLAYER.PLAYER_PED_ID())
 	WATER.MODIFY_WATER(coords.x, coords.y, coords.z, num)
 end)
 
-features.add_separator("Waves", subs.localSub.water.submenu)
+features.add_separator("波浪", subs.localSub.water.submenu)
 
-ui.add_num_option("Waves intensivity", subs.localSub.water.submenu, 0, 30, 1, function(num)
+ui.add_num_option("波浪强度", subs.localSub.water.submenu, 0, 30, 1, function(num)
 	WATER.SET_DEEP_OCEAN_SCALER(num/10.0)
 end)
 
-ui.add_num_option("Waves strength", subs.localSub.water.submenu, 0, 30, 1, function(num)
+ui.add_num_option("波浪强度", subs.localSub.water.submenu, 0, 30, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_STRENGTH(num/10.0)
 end)
 
-features.add_separator("Shore waves", subs.localSub.water.submenu)
+features.add_separator("岸浪", subs.localSub.water.submenu)
 
-ui.add_num_option("Amplitude", subs.localSub.water.submenu,0, 20, 1, function(num)
+ui.add_num_option("振幅", subs.localSub.water.submenu,0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_SHOREWAVEAMPLITUDE(num)
 end)
 
-ui.add_num_option("Min amplitude", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("最小振幅", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_SHOREWAVEMINAMPLITUDE(num)
 end)
 
-ui.add_num_option("Max amplitude", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("最大振幅", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_SHOREWAVEMAXAMPLITUDE(num)
 end)
 
-features.add_separator("Ocean waves", subs.localSub.water.submenu)
+features.add_separator("海浪", subs.localSub.water.submenu)
 
-ui.add_num_option("Amplitude", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("振幅", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_OCEANWAVEAMPLITUDE(num)
 end)
 
-ui.add_num_option("Min amplitude", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("最小振幅", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_OCEANWAVEMINAMPLITUDE(num)
 end)
 
-ui.add_num_option("Max amplitude", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("最大振幅", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_OCEANWAVEMAXAMPLITUDE(num)
 end)
 
-features.add_separator("Ripple", subs.localSub.water.submenu)
+features.add_separator("波纹", subs.localSub.water.submenu)
 
-ui.add_num_option("Bumpiness", subs.localSub.water.submenu, 0, 100, 1, function(num)
+ui.add_num_option("颠簸", subs.localSub.water.submenu, 0, 100, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_RIPPLEBUMPINESS(num)
 end)
 
-ui.add_num_option("Min bumpiness", subs.localSub.water.submenu, 0, 100, 1, function(num)
+ui.add_num_option("最小颠簸", subs.localSub.water.submenu, 0, 100, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_RIPPLEMINBUMPINESS(num)
 end)
 
-ui.add_num_option("Max bumpiness", subs.localSub.water.submenu, 0, 100, 1, function(num)
+ui.add_num_option("最大颠簸", subs.localSub.water.submenu, 0, 100, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_RIPPLEMAXBUMPINESS(num)
 end)
 
-ui.add_num_option("Disturb", subs.localSub.water.submenu, 0, 5, 1, function(num)
+ui.add_num_option("干扰", subs.localSub.water.submenu, 0, 5, 1, function(num)
 	MISC.WATER_OVERRIDE_SET_RIPPLEDISTURB(num)
 end)
 
-features.add_separator("Other", subs.localSub.water.submenu)
+features.add_separator("其他", subs.localSub.water.submenu)
 
-ui.add_num_option("Fade in", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("淡入", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_FADE_IN(num)
 end)
 
-ui.add_num_option("Fade out", subs.localSub.water.submenu, 0, 20, 1, function(num)
+ui.add_num_option("消退", subs.localSub.water.submenu, 0, 20, 1, function(num)
 	MISC.WATER_OVERRIDE_FADE_OUT(num)
 end)
 
-ui.add_bool_option("Riot mode", subs.localSub.world.submenu, function(state) 
+ui.add_bool_option("暴动模式", subs.localSub.world.submenu, function(state) 
 	MISC.SET_RIOT_MODE_ENABLED(state)
 end)
 
-ui.add_click_option("Call artillery strike at waypoint", subs.localSub.world.submenu, function()
+ui.add_click_option("在航路点呼叫炮击", subs.localSub.world.submenu, function()
 	local coords = features.getWaypointCoords()
 	for i = 1, 20 do
 		local a = math.random(-10, 10)
@@ -874,61 +866,61 @@ ui.add_click_option("Call artillery strike at waypoint", subs.localSub.world.sub
 	end
 end)
 
-subs.localSub.watchDogs = features.addSubmenu("Watch Dogs 2 mode", subs.localSub.main.submenu)
+subs.localSub.watchDogs = features.addSubmenu("看门狗模式", subs.localSub.main.submenu)
 
 stuff.lastPedOutfit = {}
 
-options['enableWatchDogsMod'] = ui.add_bool_option("Enable", subs.localSub.watchDogs.submenu, function(state)
+options['enableWatchDogsMod'] = ui.add_bool_option("开启", subs.localSub.watchDogs.submenu, function(state)
 	if state then
 		WEAPON.REMOVE_ALL_PED_WEAPONS(PLAYER.PLAYER_PED_ID(), true)
 		WEAPON.GIVE_WEAPON_TO_PED(PLAYER.PLAYER_PED_ID(), utils.joaat("WEAPON_STUNGUN"), 20, false, true)
 		stuff.lastPedOutfit = features.getPedInfo(PLAYER.PLAYER_PED_ID())
-		features.note("Aim at ped you want to settle in and press E\nDon't use it too often!") 
+		features.note("瞄准你想安顿下来的 ped 并按 E\n不要经常使用它！") 
 	end
 end)
 
-options['resetModel'] = ui.add_click_option("Reset model", subs.localSub.watchDogs.submenu, function()
+options['resetModel'] = ui.add_click_option("重置模型", subs.localSub.watchDogs.submenu, function()
 	features.cloneToPed(stuff.lastPedOutfit)
 end)
 
-features.add_separator("Forced actions", subs.localSub.main.submenu)
+features.add_separator("强制行动", subs.localSub.main.submenu)
 
-ui.add_click_option("Force quit to Story mode", subs.localSub.main.submenu, function() 
+ui.add_click_option("强制退出故事模式", subs.localSub.main.submenu, function() 
 	NETWORK._SHUTDOWN_AND_LOAD_MOST_RECENT_SAVE()
 end)
 
-ui.add_click_option("Restart game", subs.localSub.main.submenu, function()
+ui.add_click_option("重启游戏", subs.localSub.main.submenu, function()
 	MISC._RESTART_GAME()
 end)
 
-ui.add_click_option("Quit & Force update SC", subs.localSub.main.submenu, function()
+ui.add_click_option("退出并强制更新 SC", subs.localSub.main.submenu, function()
 	MISC._FORCE_SOCIAL_CLUB_UPDATE()
 end)
 
 -- NEW SECTION | SPAWNER
 
 subs.spawnerSub = {}
-subs.spawnerSub.main = features.addSubmenu("Entities", subs.main)
+subs.spawnerSub.main = features.addSubmenu("实体", subs.main)
 subs.spawnerSub.peds = {}
-subs.spawnerSub.peds.main = features.addSubmenu("NPCs", subs.spawnerSub.main.submenu)
-subs.spawnerSub.peds.saved = features.addSubmenu("Saved peds", subs.spawnerSub.peds.main.submenu)
+subs.spawnerSub.peds.main = features.addSubmenu("模型", subs.spawnerSub.main.submenu)
+subs.spawnerSub.peds.saved = features.addSubmenu("保存", subs.spawnerSub.peds.main.submenu)
 subs.spawnerSub.vehicles = {}
-subs.spawnerSub.vehicles.main = features.addSubmenu("Vehicles", subs.spawnerSub.main.submenu)
+subs.spawnerSub.vehicles.main = features.addSubmenu("车辆", subs.spawnerSub.main.submenu)
 
-subs.spawnerSub.vehicles.settings = features.addSubmenu("Settings", subs.spawnerSub.vehicles.main.submenu)
-options['spawnerVehicleSettingsPreset'] = ui.add_choose("Use preset", subs.spawnerSub.vehicles.settings.submenu, true, {"Default", "Random", "Max", "Power"}, function() end)
-options['spawnerVehicleSettingsInvincible'] = ui.add_bool_option("Spawn invincible", subs.spawnerSub.vehicles.settings.submenu, function() end)
-options['spawnerVehicleSettingsInVehicle'] = ui.add_bool_option("Spawn in vehicle", subs.spawnerSub.vehicles.settings.submenu, function() end)
-options['spawnerVehicleSettingsInAir'] = ui.add_bool_option("Spawn aircraft in air", subs.spawnerSub.vehicles.settings.submenu, function() end)
-options['spawnerVehicleSettingsRemoveLast'] = ui.add_bool_option("Remove previous vehicle", subs.spawnerSub.vehicles.settings.submenu, function() end)
+subs.spawnerSub.vehicles.settings = features.addSubmenu("设置", subs.spawnerSub.vehicles.main.submenu)
+options['spawnerVehicleSettingsPreset'] = ui.add_choose("使用预设", subs.spawnerSub.vehicles.settings.submenu, true, {"默认", "随机", "最大", "效率"}, function() end)
+options['spawnerVehicleSettingsInvincible'] = ui.add_bool_option("生成无敌", subs.spawnerSub.vehicles.settings.submenu, function() end)
+options['spawnerVehicleSettingsInVehicle'] = ui.add_bool_option("在车辆中生成", subs.spawnerSub.vehicles.settings.submenu, function() end)
+options['spawnerVehicleSettingsInAir'] = ui.add_bool_option("在空中生成飞机", subs.spawnerSub.vehicles.settings.submenu, function() end)
+options['spawnerVehicleSettingsRemoveLast'] = ui.add_bool_option("移除之前的车辆", subs.spawnerSub.vehicles.settings.submenu, function() end)
 
-subs.spawnerSub.vehicles.saved = features.addSubmenu("Saved vehicles", subs.spawnerSub.vehicles.main.submenu)
+subs.spawnerSub.vehicles.saved = features.addSubmenu("保存", subs.spawnerSub.vehicles.main.submenu)
 subs.spawnerSub.objects = {}
-subs.spawnerSub.objects.main = features.addSubmenu("Objects", subs.spawnerSub.main.submenu)
-subs.spawnerSub.objects.saved = features.addSubmenu("Saved objects", subs.spawnerSub.objects.main.submenu)
+subs.spawnerSub.objects.main = features.addSubmenu("物体", subs.spawnerSub.main.submenu)
+subs.spawnerSub.objects.saved = features.addSubmenu("保存", subs.spawnerSub.objects.main.submenu)
 subs.spawnerSub.weapons = {}
-subs.spawnerSub.weapons.main = features.addSubmenu("Weapons", subs.spawnerSub.main.submenu)
-subs.spawnerSub.weapons.loadouts = features.addSubmenu("Loadouts", subs.spawnerSub.weapons.main.submenu)
+subs.spawnerSub.weapons.main = features.addSubmenu("武器", subs.spawnerSub.main.submenu)
+subs.spawnerSub.weapons.loadouts = features.addSubmenu("装载", subs.spawnerSub.weapons.main.submenu)
 
 stuff.spawnerOptions = {
 	peds = {},
@@ -951,22 +943,22 @@ function features.spawnPed(name, hash, coords)
 		}
 		local sub = features.addSubmenu(subName, subs.spawnerSub.peds.main.submenu)
 		options['spawnedPed_' .. spawnedPed] = sub
-		table.insert(optTable, ui.add_click_option("Save", sub.submenu, function()
+		table.insert(optTable, ui.add_click_option("保存", sub.submenu, function()
 			features.addRemoveSavedEntity("ped", name, hash, true)
 		end))
-		table.insert(optTable, features.add_separator("Physics", sub.submenu))
-		table.insert(optTable, ui.add_bool_option("Invincible", sub.submenu, function(state)
+		table.insert(optTable, features.add_separator("物理", sub.submenu))
+		table.insert(optTable, ui.add_bool_option("无敌", sub.submenu, function(state)
 			ENTITY.SET_ENTITY_INVINCIBLE(spawnedPed, state)
 		end))
-		table.insert(optTable, features.add_separator("Bodyguard", sub.submenu))
-		table.insert(optTable, ui.add_click_option("Make a bodyguard", sub.submenu, function()
+		table.insert(optTable, features.add_separator("保镖", sub.submenu))
+		table.insert(optTable, ui.add_click_option("做保镖", sub.submenu, function()
 			features.makePedABodyguard(spawnedPed, bgConfig.godmode, bgConfig.weapon, bgConfig.formation, bgConfig.ignorePlayers)
 		end))
-		table.insert(optTable, ui.add_bool_option("Godmode", sub.submenu, function(state)
+		table.insert(optTable, ui.add_bool_option("无敌", sub.submenu, function(state)
 			bgConfig.godmode = state
 			features.makePedABodyguard(spawnedPed, bgConfig.godmode, bgConfig.weapon, bgConfig.formation, bgConfig.ignorePlayers)
 		end))
-		sub.wep = features.addSubmenu("Weapon", sub.submenu)
+		sub.wep = features.addSubmenu("武器", sub.submenu)
 		local wepCategories = {}
 		for _, wepInfo in ipairs(parsedFiles.weapons) do
 			if wepInfo['TranslatedLabel'] ~= nil and wepInfo['Category'] ~= nil then
@@ -985,24 +977,24 @@ function features.spawnPed(name, hash, coords)
 				end
 			end
 		end
-		table.insert(optTable, ui.add_choose("Formation", sub.submenu, false, {"Default", "Circle Around Leader", "Alt. Circle Around Leader", "Line, with Leader at center"}, function(pos)
+		table.insert(optTable, ui.add_choose("编队", sub.submenu, false, {"默认", "环绕我", "替代。 环绕我", "线，以我为中心"}, function(pos)
 			bgConfig.formation = pos
 			features.makePedABodyguard(spawnedPed, bgConfig.godmode, bgConfig.weapon, bgConfig.formation, bgConfig.ignorePlayers)
 		end))
-		table.insert(optTable, ui.add_bool_option("Ignore players", sub.submenu, function(state)
+		table.insert(optTable, ui.add_bool_option("忽略玩家", sub.submenu, function(state)
 			bgConfig.ignorePlayers = state
 			features.makePedABodyguard(spawnedPed, bgConfig.godmode, bgConfig.weapon, bgConfig.formation, bgConfig.ignorePlayers)
 		end))
-		table.insert(optTable, features.add_separator("Teleport", sub.submenu))
-		table.insert(optTable, ui.add_choose("Teleport", sub.submenu, false, {"Ped to me", "Me to ped"}, function(pos)
+		table.insert(optTable, features.add_separator("传送", sub.submenu))
+		table.insert(optTable, ui.add_choose("传送", sub.submenu, false, {"模型到我", "我到模型"}, function(pos)
 			if pos == 0 then
 				ENTITY.SET_ENTITY_COORDS(spawnedPed, features.getEntityCoords(PLAYER.PLAYER_PED_ID()).x, features.getEntityCoords(PLAYER.PLAYER_PED_ID()).y, features.getEntityCoords(PLAYER.PLAYER_PED_ID()).z, false, false, false, false)
 			elseif pos == 1 then
 				ENTITY.SET_ENTITY_COORDS(PLAYER.PLAYER_PED_ID(), features.getEntityCoords(spawnedPed).x, features.getEntityCoords(spawnedPed).y, features.getEntityCoords(spawnedPed).z, false, false, false, false)
 			end
 		end))
-		table.insert(optTable, features.add_separator("Misc", sub.submenu))
-		table.insert(optTable, ui.add_click_option("Delete", sub.submenu, function()
+		table.insert(optTable, features.add_separator("杂项", sub.submenu))
+		table.insert(optTable, ui.add_click_option("删除", sub.submenu, function()
 			entities.delete(spawnedPed)
 			for _, option in pairs(optTable) do
 				ui.remove(option)
@@ -1124,26 +1116,26 @@ function features.spawnObject(name, coords)
 		local optTable = {}
 		local sub = features.addSubmenu(subName, subs.spawnerSub.objects.main.submenu)
 		options['spawnedObject_' .. spawnedObject] = sub
-		table.insert(optTable, ui.add_click_option("Save", sub.submenu, function()
+		table.insert(optTable, ui.add_click_option("保存", sub.submenu, function()
 			features.addRemoveSavedEntity('object', name, hash, true)
 		end))
-		table.insert(optTable, features.add_separator("Physics", sub.submenu))
-		table.insert(optTable, ui.add_choose("Disable collision", sub.submenu, true, {"None", "Disable", "Disable & Keep Physics"}, function(pos)
+		table.insert(optTable, features.add_separator("物理", sub.submenu))
+		table.insert(optTable, ui.add_choose("禁用碰撞", sub.submenu, true, {"无", "禁用", "禁用并保留物理"}, function(pos)
 			ENTITY.SET_ENTITY_COLLISION(spawnedObject, pos == 0, pos == 3)
 		end))
-		table.insert(optTable, ui.add_bool_option("Invincible", sub.submenu, function(state)
+		table.insert(optTable, ui.add_bool_option("无敌", sub.submenu, function(state)
 			ENTITY.SET_ENTITY_INVINCIBLE(spawnedObject, state)
 		end))
-		table.insert(optTable, ui.add_bool_option("Invisible", sub.submenu, function(state)
+		table.insert(optTable, ui.add_bool_option("隐形", sub.submenu, function(state)
 			ENTITY.SET_ENTITY_VISIBLE(spawnedObject, not state, false)
 		end))
 		table.insert(optTable, ui.add_num_option("Alpha", sub.submenu, 0, 255, 1, function(num)
 			ENTITY.SET_ENTITY_ALPHA(spawnedObject, num, false)
 		end))
-		table.insert(optTable, ui.add_bool_option("No gravity", sub.submenu, function(state)
+		table.insert(optTable, ui.add_bool_option("无重力", sub.submenu, function(state)
 			ENTITY.SET_ENTITY_HAS_GRAVITY(spawnedObject, not state)
 		end))
-		table.insert(optTable, features.add_separator("Rotation", sub.submenu))
+		table.insert(optTable, features.add_separator("旋转", sub.submenu))
 		local function getEntityRotation(entity)
 			return ENTITY.GET_ENTITY_ROTATION(entity, 5)
 		end
@@ -1208,10 +1200,10 @@ if doesFileExist(paths.configs.savedPeds) then
 	end
 end
 
-options['savedVehicleName'] = ui.add_input_string("Name", subs.spawnerSub.vehicles.saved.submenu, function() end)
-ui.set_value(options['savedVehicleName'], "Empty", true)
+options['savedVehicleName'] = ui.add_input_string("名字", subs.spawnerSub.vehicles.saved.submenu, function() end)
+ui.set_value(options['savedVehicleName'], "清空", true)
 
-options['saveVehicle'] = ui.add_click_option("Save", subs.spawnerSub.vehicles.saved.submenu, function()
+options['saveVehicle'] = ui.add_click_option("保存", subs.spawnerSub.vehicles.saved.submenu, function()
 	local vehicle = features.getLocalVehicle(false)
 	if not features.doesEntityExist(vehicle) or PED.IS_PED_IN_ANY_VEHICLE(PLAYER.PLAYER_PED_ID(), false) == 0 then return end
 	local path = paths.folders.savedVehicles .. "\\" ..  ui.get_value(options['savedVehicleName'])
@@ -1222,9 +1214,9 @@ options['saveVehicle'] = ui.add_click_option("Save", subs.spawnerSub.vehicles.sa
 	features.reloadSavedVehicles()
 end)
 
--- options['savedVehiclesSep'] = ui.add_separator("Auto spawner", subs.spawnerSub.vehicles.saved.submenu)
+-- options['savedVehiclesSep'] = ui.add_separator("自动生成", subs.spawnerSub.vehicles.saved.submenu)
 
-options['savedVehiclesSep'] = ui.add_separator("Vehicles", subs.spawnerSub.vehicles.saved.submenu)
+options['savedVehiclesSep'] = ui.add_separator("车辆", subs.spawnerSub.vehicles.saved.submenu)
 
 function features.reloadSavedVehicles()
 	if not doesFolderExist(paths.folders.savedVehicles) then return end
@@ -1232,7 +1224,7 @@ function features.reloadSavedVehicles()
 		ui.remove(optionID)
 	end
 	for line in io.popen("dir \"" .. paths.folders.savedVehicles .. "\" /a /b", "r"):lines() do
-		table.insert(stuff.savedVehicles, ui.add_choose(tostring(line), subs.spawnerSub.vehicles.saved.submenu, false, {"Spawn", "Set as default", "Remove default state"}, function(pos)
+		table.insert(stuff.savedVehicles, ui.add_choose(tostring(line), subs.spawnerSub.vehicles.saved.submenu, false, {"生成", "设为默认", "移除默认状态"}, function(pos)
 			local path = paths.folders.savedVehicles .. "\\" ..  line
 			if not doesFileExist(path) then features.alert(string.format("Failed to load: %s | File doesnt exist anymore!", path)) return end
 			local file = io.open(path, 'r')
@@ -1257,7 +1249,7 @@ features.reloadSavedVehicles()
 
 if doesFileExist(paths.configs.savedObjects) then
 	for object, hash in pairs(json:decode(io.open(paths.configs.savedObjects, 'r'):read('*all'))) do
-		stuff.savedObjects[object] = ui.add_choose(object, subs.spawnerSub.objects.saved.submenu, false, {"Spawn", "Remove"}, function(pos)
+		stuff.savedObjects[object] = ui.add_choose(object, subs.spawnerSub.objects.saved.submenu, false, {"生成", "删除"}, function(pos)
 			if pos == 0 then
 				local coords = ENTITY.GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(PLAYER.PLAYER_PED_ID(), 0, 5, 0)
 				features.spawnObject(object, coords)
@@ -1350,7 +1342,7 @@ do
 			end
 		end)
 	end
-	subs.spawnerSub.peds.search = features.addSubmenu("Search", subs.spawnerSub.peds.main.submenu)
+	subs.spawnerSub.peds.search = features.addSubmenu("搜索", subs.spawnerSub.peds.main.submenu)
 	ui.add_input_string("Name", subs.spawnerSub.peds.search.submenu, function(text)
 		if features.isEmpty(text) then return end
 		for _, option in ipairs(stuff.spawnerOptions.peds) do
@@ -1375,9 +1367,9 @@ do
 end
 
 do
-	subs.spawnerSub.vehicles.classes = features.addSubmenu("Classes", subs.spawnerSub.vehicles.main.submenu)
-	subs.spawnerSub.vehicles.dlcs = features.addSubmenu("DLCs", subs.spawnerSub.vehicles.main.submenu)
-	subs.spawnerSub.vehicles.search = features.addSubmenu("Search", subs.spawnerSub.vehicles.main.submenu)
+	subs.spawnerSub.vehicles.classes = features.addSubmenu("种类", subs.spawnerSub.vehicles.main.submenu)
+	subs.spawnerSub.vehicles.dlcs = features.addSubmenu("DLC", subs.spawnerSub.vehicles.main.submenu)
+	subs.spawnerSub.vehicles.search = features.addSubmenu("搜索", subs.spawnerSub.vehicles.main.submenu)
 	stuff.spawnerVehicleCategories = {}
 	stuff.spawnerVehicleDLCs = {}
 	stuff.spawnerVehiclesSpawned = {}
@@ -1427,7 +1419,7 @@ end
 
 do
 	stuff.spawnerObjectsSpawned = {}
-	subs.spawnerSub.objects.search = features.addSubmenu("Search", subs.spawnerSub.objects.main.submenu)
+	subs.spawnerSub.objects.search = features.addSubmenu("搜索", subs.spawnerSub.objects.main.submenu)
 	ui.add_input_string("Name", subs.spawnerSub.objects.search.submenu, function(text)
 		if features.isEmpty(text) then return end
 		for _, option in pairs(stuff.spawnerOptions.objects) do
@@ -1446,7 +1438,7 @@ do
 			end
 		end
 	end)
-	features.add_separator("Spawned objects", subs.spawnerSub.objects.main.submenu)
+	features.add_separator("生成的物体", subs.spawnerSub.objects.main.submenu)
 end		
 
 stuff.blWepCategories = {["GROUP_DIGISCANNER"] = false, ["GROUP_NIGHTVISION"] = false, ["GROUP_TRANQILIZER"] = false}
@@ -1512,12 +1504,12 @@ function features.loadWepLoadout(path)
 end
 
 function features.reloadWepLoadouts()
-	features.note("Reloading loadouts...")
+	features.note("重新加载负载...")
 	for _, id in ipairs(stuff.displayedWepLoadouts) do
 		ui.remove(id)
 	end
 	for line in io.popen("dir \"" .. paths.folders.wepLoadouts .. "\" /a /b", "r"):lines() do
-		table.insert(stuff.displayedWepLoadouts, ui.add_choose(tostring(line), subs.spawnerSub.weapons.loadouts.submenu, false, {"Load", "Set as default", "Remove default state"}, function(pos)
+		table.insert(stuff.displayedWepLoadouts, ui.add_choose(tostring(line), subs.spawnerSub.weapons.loadouts.submenu, false, {"加载", "设为默认", "移除默认状态"}, function(pos)
 			local path = paths.folders.wepLoadouts .. "\\" ..  line
 			if pos == 0 then
 				features.loadWepLoadout(path)
@@ -1534,11 +1526,11 @@ end
 
 features.reloadWepLoadouts()
 
-ui.add_click_option("Remove all weapons", subs.spawnerSub.weapons.main.submenu, function()
+ui.add_click_option("移除所有武器", subs.spawnerSub.weapons.main.submenu, function()
 	WEAPON.REMOVE_ALL_PED_WEAPONS(PLAYER.PLAYER_PED_ID(), false)
 end)
 
-features.add_separator("Categories", subs.spawnerSub.weapons.main.submenu)
+features.add_separator("类别", subs.spawnerSub.weapons.main.submenu)
 
 if doesFileExist(paths.dumps.weapons) then
 	local ped = PLAYER.PLAYER_PED_ID()
@@ -1590,7 +1582,7 @@ if doesFileExist(paths.dumps.weapons) then
 	end
 end
 
-subs.spawnerSub.modelSwap = features.addSubmenu("Object swap", subs.spawnerSub.main.submenu)
+subs.spawnerSub.modelSwap = features.addSubmenu("物体交换", subs.spawnerSub.main.submenu)
 
 stuff.savedSwaps = {}
 stuff.displayedSwaps = {}
@@ -1624,12 +1616,12 @@ function features.reloadSavedSwaps()
 end
 
 
-options['modelSwapFrom'] = ui.add_input_string("Original", subs.spawnerSub.modelSwap.submenu, function() end)
-options['modelSwapTo'] = ui.add_input_string("New", subs.spawnerSub.modelSwap.submenu, function() end)
-options['modelSwapRadius'] = ui.add_num_option("Radius", subs.spawnerSub.modelSwap.submenu, 0, 1000, 1, function() end)
+options['modelSwapFrom'] = ui.add_input_string("原本", subs.spawnerSub.modelSwap.submenu, function() end)
+options['modelSwapTo'] = ui.add_input_string("新的", subs.spawnerSub.modelSwap.submenu, function() end)
+options['modelSwapRadius'] = ui.add_num_option("半径", subs.spawnerSub.modelSwap.submenu, 0, 1000, 1, function() end)
 ui.set_value(options['modelSwapRadius'], 300, true)
-options['modelSwapMode'] = ui.add_choose("Input value type", subs.spawnerSub.modelSwap.submenu, true, {"Name", "Hash"}, function() end)
-options['createSwap'] = ui.add_click_option("Create swap", subs.spawnerSub.modelSwap.submenu, function() 
+options['modelSwapMode'] = ui.add_choose("输入值类型", subs.spawnerSub.modelSwap.submenu, true, {"名字", "哈希值"}, function() end)
+options['createSwap'] = ui.add_click_option("创建交换", subs.spawnerSub.modelSwap.submenu, function() 
 	if features.isEmpty(ui.get_value(options['modelSwapFrom'])) or features.isEmpty(ui.get_value(options['modelSwapTo'])) then return end
 	local outTable = {}
 	outTable['name'] = string.format("%s -> %s", ui.get_value(options['modelSwapFrom']), ui.get_value(options['modelSwapTo']))
@@ -1644,13 +1636,13 @@ options['createSwap'] = ui.add_click_option("Create swap", subs.spawnerSub.model
 	table.insert(stuff.savedSwaps, outTable)
 	features.reloadSavedSwaps()
 end)
-ui.add_separator("Saved swaps", subs.spawnerSub.modelSwap.submenu)
+ui.add_separator("保存的互换", subs.spawnerSub.modelSwap.submenu)
 
 features.reloadSavedSwaps()
 
 
-subs.spawnerSub.modelChange = features.addSubmenu("Model change", subs.spawnerSub.main.submenu)
-subs.spawnerSub.modelChange.saved = features.addSubmenu("Saved models", subs.spawnerSub.modelChange.submenu)
+subs.spawnerSub.modelChange = features.addSubmenu("模型更改", subs.spawnerSub.main.submenu)
+subs.spawnerSub.modelChange.saved = features.addSubmenu("保存的模型", subs.spawnerSub.modelChange.submenu)
 
 stuff.savedModels = {}
 stuff.displayedModels = {}
@@ -1683,11 +1675,11 @@ function features.reloadSavedModels()
 end
 
 do
-	subs.spawnerSub.modelChange.types = features.addSubmenu("Types", subs.spawnerSub.modelChange.submenu)
+	subs.spawnerSub.modelChange.types = features.addSubmenu("类型", subs.spawnerSub.modelChange.submenu)
 	stuff.spawnerModelCategories = {}
 	stuff.originalModel = nil
 	stuff.spawnerOptions.models = {}
-	subs.spawnerSub.modelChange.search = features.addSubmenu("Search", subs.spawnerSub.modelChange.submenu)
+	subs.spawnerSub.modelChange.search = features.addSubmenu("搜索", subs.spawnerSub.modelChange.submenu)
 	ui.add_input_string("Name", subs.spawnerSub.modelChange.search.submenu, function(text)
 		if features.isEmpty(text) then return end
 		for _, option in ipairs(stuff.spawnerOptions.models) do
@@ -1723,7 +1715,7 @@ do
 			end
 		end)
 	end
-	options['spawnerResetModel'] = ui.add_click_option("Reset model", subs.spawnerSub.modelChange.submenu, function()
+	options['spawnerResetModel'] = ui.add_click_option("重置模型", subs.spawnerSub.modelChange.submenu, function()
 		features.cloneToPed(stuff.originalModel)
 	end)
 	ui.add_separator("Results", subs.spawnerSub.modelChange.search.submenu)
@@ -1734,9 +1726,9 @@ features.reloadSavedModels()
 -- NEW SECTION | VEHICLE
 
 subs.vehicleSub = {}
-subs.vehicleSub.main = features.addSubmenu("Vehicle", subs.main)
+subs.vehicleSub.main = features.addSubmenu("车辆", subs.main)
 
-ui.add_click_option("Teleport in a nearest vehicle", subs.vehicleSub.main.submenu, function()
+ui.add_click_option("在最近的车辆中传送", subs.vehicleSub.main.submenu, function()
 	local vehicle = features.getClosestVehicle()
 	local driver = VEHICLE.GET_PED_IN_VEHICLE_SEAT(vehicle, -1, false)
 	if VEHICLE.IS_VEHICLE_SEAT_FREE(vehicle, -1, false) == 1 then
@@ -1756,25 +1748,25 @@ ui.add_click_option("Teleport in a nearest vehicle", subs.vehicleSub.main.submen
 	end
 end)
 
-ui.add_choose("Switch seat", subs.vehicleSub.main.submenu, false, {"Driver", "Co-driver", "Left passanger", "Right passanger"}, function(pos)
+ui.add_choose("换座", subs.vehicleSub.main.submenu, false, {"司机", "副驾驶", "左乘客", "右乘客"}, function(pos)
 	local ped = PLAYER.PLAYER_PED_ID()
 	local vehicle = features.getLocalVehicle(false)
 	PED.SET_PED_INTO_VEHICLE(ped, vehicle, pos-1)
 end)
 
-subs.vehicleSub.movement = features.addSubmenu("Movement", subs.vehicleSub.main.submenu)
+subs.vehicleSub.movement = features.addSubmenu("移动", subs.vehicleSub.main.submenu)
 
-subs.vehicleSub.flyMode = features.addSubmenu("Fly-mode", subs.vehicleSub.movement.submenu)
+subs.vehicleSub.flyMode = features.addSubmenu("飞行模式", subs.vehicleSub.movement.submenu)
 
-options['fmNormalSpeed'] = ui.add_num_option("Normal speed", subs.vehicleSub.flyMode.submenu, 0, 100, 10, function() end)
+options['fmNormalSpeed'] = ui.add_num_option("正常的速度", subs.vehicleSub.flyMode.submenu, 0, 100, 10, function() end)
 ui.set_value(options['fmNormalSpeed'], 50, true)
-options['fmBoostedSpeed'] = ui.add_num_option("Boosted speed", subs.vehicleSub.flyMode.submenu, 0, 1500, 100, function() end)
+options['fmBoostedSpeed'] = ui.add_num_option("提高速度", subs.vehicleSub.flyMode.submenu, 0, 1500, 100, function() end)
 ui.set_value(options['fmBoostedSpeed'], 150, true)
-options['fmIgnoreSpeedLimit'] = ui.add_bool_option("Ignore speed limit", subs.vehicleSub.flyMode.submenu, function() end)
+options['fmIgnoreSpeedLimit'] = ui.add_bool_option("无视限速", subs.vehicleSub.flyMode.submenu, function() end)
 
-options['fmEnable'] = ui.add_bool_option("Enable", subs.vehicleSub.flyMode.submenu, function(state)
+options['fmEnable'] = ui.add_bool_option("启用", subs.vehicleSub.flyMode.submenu, function(state)
     if state then
-		features.note("Controls: WASD + SHIFT (Increases speed)")
+		features.note("控制：WASD + SHIFT（提高速度）")
 	else
 		local vehicle = features.getLocalVehicle(false)
         ENTITY.SET_ENTITY_INVINCIBLE(vehicle, 0)
@@ -1783,89 +1775,89 @@ options['fmEnable'] = ui.add_bool_option("Enable", subs.vehicleSub.flyMode.subme
     end
 end)
 
-options['engineAlwaysOn'] = ui.add_bool_option("Engine always on", subs.vehicleSub.movement.submenu, function() end)
+options['engineAlwaysOn'] = ui.add_bool_option("引擎始终开启", subs.vehicleSub.movement.submenu, function() end)
 
-subs.vehicleSub.nitro = features.addSubmenu("The Crew 2 nitro [X]", subs.vehicleSub.movement.submenu)
-options['crew2NitroEnabled'] = ui.add_bool_option("Enable", subs.vehicleSub.nitro.submenu, function() end)
-options['crew2NitroSpeed'] = ui.add_num_option("Nitro power", subs.vehicleSub.nitro.submenu, 1, 30, 1, function() end)
+subs.vehicleSub.nitro = features.addSubmenu("加速 [X]", subs.vehicleSub.movement.submenu)
+options['crew2NitroEnabled'] = ui.add_bool_option("启用", subs.vehicleSub.nitro.submenu, function() end)
+options['crew2NitroSpeed'] = ui.add_num_option("增加动力", subs.vehicleSub.nitro.submenu, 1, 30, 1, function() end)
 
-subs.vehicleSub.cruise = features.addSubmenu("Cruise control", subs.vehicleSub.movement.submenu)
-options['cruiseEnabled'] = ui.add_bool_option("Enable", subs.vehicleSub.cruise.submenu, function() end)
-options['cruiseSpeed'] = ui.add_num_option("Speed", subs.vehicleSub.cruise.submenu, 1, 369, 1, function() end)
-options['cruiseKeepCurrSpeed'] = ui.add_bool_option("Keep current speed", subs.vehicleSub.cruise.submenu, function() end)
+subs.vehicleSub.cruise = features.addSubmenu("巡航控制", subs.vehicleSub.movement.submenu)
+options['cruiseEnabled'] = ui.add_bool_option("启用", subs.vehicleSub.cruise.submenu, function() end)
+options['cruiseSpeed'] = ui.add_num_option("速度", subs.vehicleSub.cruise.submenu, 1, 369, 1, function() end)
+options['cruiseKeepCurrSpeed'] = ui.add_bool_option("保持当前速度", subs.vehicleSub.cruise.submenu, function() end)
 
-options['disableTurbulence'] = ui.add_bool_option("Disable turbulence", subs.vehicleSub.movement.submenu, function() end)
-options['disableCollision'] = ui.add_bool_option("Disable collision on aircraft", subs.vehicleSub.movement.submenu, function() end)
-options['disableGravity'] = ui.add_bool_option("Disable gravity", subs.vehicleSub.movement.submenu, function() end)
+options['disableTurbulence'] = ui.add_bool_option("禁用颠簸", subs.vehicleSub.movement.submenu, function() end)
+options['disableCollision'] = ui.add_bool_option("在飞机上禁用碰撞", subs.vehicleSub.movement.submenu, function() end)
+options['disableGravity'] = ui.add_bool_option("禁用重力", subs.vehicleSub.movement.submenu, function() end)
 
-subs.vehicleSub.superDrive = features.addSubmenu("Super drive [W]", subs.vehicleSub.movement.submenu)
-options['superDriveEnabled'] = ui.add_bool_option("Enable", subs.vehicleSub.superDrive.submenu, function() end)
-options['superDriveIgnoreLimit'] = ui.add_bool_option("Ignore speed limit", subs.vehicleSub.superDrive.submenu, function() end)
-options['superDrivePower'] = ui.add_num_option("Power", subs.vehicleSub.superDrive.submenu, 1, 20, 1, function() end)
+subs.vehicleSub.superDrive = features.addSubmenu("超级驱动 [W]", subs.vehicleSub.movement.submenu)
+options['superDriveEnabled'] = ui.add_bool_option("启用", subs.vehicleSub.superDrive.submenu, function() end)
+options['superDriveIgnoreLimit'] = ui.add_bool_option("无视限速", subs.vehicleSub.superDrive.submenu, function() end)
+options['superDrivePower'] = ui.add_num_option("驱动", subs.vehicleSub.superDrive.submenu, 1, 20, 1, function() end)
 
-subs.vehicleSub.cargoboba = features.addSubmenu("Cargobob options", subs.vehicleSub.movement.submenu)
-ui.add_click_option("Spawn Cargobob", subs.vehicleSub.cargoboba.submenu, function()
+subs.vehicleSub.cargoboba = features.addSubmenu("货运选项", subs.vehicleSub.movement.submenu)
+ui.add_click_option("生成运兵直升机", subs.vehicleSub.cargoboba.submenu, function()
 	local coords = features.getEntityCoords(PLAYER.PLAYER_PED_ID())
 	features.spawnVehicle(utils.joaat("cargobob"), coords, false)
 end)
-ui.add_click_option("Detach my vehicle from any cargobob", subs.vehicleSub.cargoboba.submenu, function()
+ui.add_click_option("将我的车辆从任何货物上卸下", subs.vehicleSub.cargoboba.submenu, function()
 	VEHICLE.DETACH_VEHICLE_FROM_ANY_CARGOBOB(features.getLocalVehicle(true))
 end)
-features.add_separator("Magnet", subs.vehicleSub.cargoboba.submenu)
-ui.add_click_option("Set magnet", subs.vehicleSub.cargoboba.submenu, function()
+features.add_separator("磁铁", subs.vehicleSub.cargoboba.submenu)
+ui.add_click_option("设置磁铁", subs.vehicleSub.cargoboba.submenu, function()
 	if features.isPedInCargobob() then 
 		VEHICLE.CREATE_PICK_UP_ROPE_FOR_CARGOBOB(features.getLocalVehicle(false), 1)
 	end
 end)
-ui.add_num_option("Magnet strength", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("磁铁强度", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_STRENGTH(features.getLocalVehicle(false), num)
 	end
 end)
-ui.add_num_option("Effect radius", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("效果半径", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_EFFECT_RADIUS(features.getLocalVehicle(false), num)
 	end
 end)
-ui.add_num_option("Reduced falloff", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("衰减减少", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_REDUCED_FALLOFF(features.getLocalVehicle(false), num)
 	end
 end)
-ui.add_num_option("Pull rope lenght", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("拉绳长度", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_REDUCED_FALLOFF(features.getLocalVehicle(false), num)
 	end
 end)
-ui.add_num_option("Pull strength", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("拉伸强度", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_PULL_STRENGTH(features.getLocalVehicle(false), num)
 	end
 end)
-ui.add_num_option("Reduced strenght", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
+ui.add_num_option("强度降低", subs.vehicleSub.cargoboba.submenu, 0, 300, 10, function(num)
 	if features.isPedInCargobob() then
 		VEHICLE.SET_CARGOBOB_PICKUP_MAGNET_REDUCED_STRENGTH(features.getLocalVehicle(false), num)
 	end
 end)
 
-subs.vehicleSub.appearence = features.addSubmenu("Appearence", subs.vehicleSub.main.submenu)
+subs.vehicleSub.appearence = features.addSubmenu("外观", subs.vehicleSub.main.submenu)
 
-options['useCountermeasures'] = ui.add_bool_option("Use countermeasures", subs.vehicleSub.appearence.submenu, function() end)
-options['useVehicleSignals'] = ui.add_bool_option("Use vehicle signals", subs.vehicleSub.appearence.submenu, function(state)
-	if state then features.note("Arrow Left/Right for left and right signals\nUse Arrow Down to turn on both.\nUse E to enable flash high beam.") end
+options['useCountermeasures'] = ui.add_bool_option("预设", subs.vehicleSub.appearence.submenu, function() end)
+options['useVehicleSignals'] = ui.add_bool_option("使用车灯", subs.vehicleSub.appearence.submenu, function(state)
+	if state then features.note("箭头向左/左右信号的右\n使用向下箭头将两者同时打开\n使用 E 启用闪光远光灯.") end
 end)
 
-options['disableDeformation'] = ui.add_bool_option("Disable deformation", subs.vehicleSub.appearence.submenu, function() end)
+options['disableDeformation'] = ui.add_bool_option("禁用变形", subs.vehicleSub.appearence.submenu, function() end)
 
-subs.vehicleSub.doors = features.addSubmenu("Doors & Windows", subs.vehicleSub.appearence.submenu)
+subs.vehicleSub.doors = features.addSubmenu("门窗", subs.vehicleSub.appearence.submenu)
 
-options['vehicleSubAllDoors'] = ui.add_bool_option("All doors", subs.vehicleSub.doors.submenu, function(state)
+options['vehicleSubAllDoors'] = ui.add_bool_option("所有门", subs.vehicleSub.doors.submenu, function(state)
 	for name, _ in pairs(doors) do
-		ui.set_value(options["vehicleSubDoors" .. name], state, false)
+		ui.set_value(options["车辆门" .. name], state, false)
 	end
 end)
 
-features.add_separator("Individual doors", subs.vehicleSub.doors.submenu)
+features.add_separator("个别的门", subs.vehicleSub.doors.submenu)
 
 for doorName, doorID in pairs(doors) do
 	options["vehicleSubDoors" .. doorName] = ui.add_bool_option(doorName, subs.vehicleSub.doors.submenu, function(state)
@@ -1877,15 +1869,15 @@ for doorName, doorID in pairs(doors) do
 	end)
 end
 
-features.add_separator("Windows", subs.vehicleSub.doors.submenu)
+features.add_separator("窗", subs.vehicleSub.doors.submenu)
 
-options['vehicleSubAllWindows'] = ui.add_bool_option("All windows", subs.vehicleSub.doors.submenu, function(state)
+options['vehicleSubAllWindows'] = ui.add_bool_option("所有窗户", subs.vehicleSub.doors.submenu, function(state)
 	for name, _ in pairs(windows) do
 		ui.set_value(options["vehicleSubWindows" .. name], state, false)
 	end
 end)
 
-features.add_separator("Individual windows", subs.vehicleSub.doors.submenu)
+features.add_separator("单独的窗口", subs.vehicleSub.doors.submenu)
 
 for windowName, doorID in pairs(windows) do
 	options["vehicleSubWindows" .. windowName] = ui.add_bool_option(windowName, subs.vehicleSub.doors.submenu, function(state)
@@ -1897,22 +1889,22 @@ for windowName, doorID in pairs(windows) do
 	end)
 end
 
-subs.vehicleSub.proofs = features.addSubmenu("Proofs", subs.vehicleSub.main.submenu)
-options['vehicleProofsEnabled'] = ui.add_bool_option("Enable", subs.vehicleSub.proofs.submenu, function() end)
+subs.vehicleSub.proofs = features.addSubmenu("自定义无敌", subs.vehicleSub.main.submenu)
+options['vehicleProofsEnabled'] = ui.add_bool_option("启用", subs.vehicleSub.proofs.submenu, function() end)
 
-features.add_separator("Proofs", subs.vehicleSub.proofs.submenu)
+features.add_separator("自定义无敌", subs.vehicleSub.proofs.submenu)
 
 for _, name in ipairs(entityProofs) do
     options['vehicleProofs' .. name] = ui.add_bool_option(name, subs.vehicleSub.proofs.submenu, function() end)
 end
 
-features.add_separator("Remote actions", subs.vehicleSub.main.submenu)
+features.add_separator("远程操作", subs.vehicleSub.main.submenu)
 
-ui.add_click_option("Clone", subs.vehicleSub.main.submenu, function()
+ui.add_click_option("克隆", subs.vehicleSub.main.submenu, function()
 	features.spawnVehicleCopy(features.getLocalVehicle(true))
 end)
 
-ui.add_choose("Engine mode", subs.vehicleSub.main.submenu, true, {"OFF", "ON"}, function(pos)
+ui.add_choose("引擎模式", subs.vehicleSub.main.submenu, true, {"关闭", "开启"}, function(pos)
 	local state = pos == 1
 	local vehicle = features.getLocalVehicle(true)
 	if features.doesEntityExist(vehicle) then
@@ -1924,7 +1916,7 @@ ui.add_choose("Engine mode", subs.vehicleSub.main.submenu, true, {"OFF", "ON"}, 
 	end
 end)
 
-ui.add_click_option("Enable alarm (30 sec)", subs.vehicleSub.main.submenu, function()
+ui.add_click_option("启用警报（30 秒）", subs.vehicleSub.main.submenu, function()
 	local vehicle = features.getLocalVehicle(true)
 	if features.doesEntityExist(vehicle) then
 		entities.request_control(vehicle, function()	
@@ -1934,16 +1926,16 @@ ui.add_click_option("Enable alarm (30 sec)", subs.vehicleSub.main.submenu, funct
 	end
 end)
 
-ui.add_bool_option("Invert controls", subs.vehicleSub.main.submenu, function(state)
+ui.add_bool_option("反相控制", subs.vehicleSub.main.submenu, function(state)
 	local vehicle = features.getLocalVehicle(true)
 	entities.request_control(vehicle, function()
 		VEHICLE._SET_VEHICLE_CONTROLS_INVERTED(vehicle, state)
 	end)
 end)
 
-options['vehicleSpin'] = ui.add_bool_option("Spin", subs.vehicleSub.main.submenu, function() end)
+options['vehicleSpin'] = ui.add_bool_option("旋转", subs.vehicleSub.main.submenu, function() end)
 
-ui.add_click_option("Explode", subs.vehicleSub.main.submenu, function()
+ui.add_click_option("爆炸", subs.vehicleSub.main.submenu, function()
 	local vehicle = features.getLocalVehicle(true)
 	entities.request_control(vehicle, function()
 		NETWORK.NETWORK_EXPLODE_VEHICLE(vehicle, 1, 0, 0)
@@ -1952,7 +1944,7 @@ end)
 
 stuff.activeBlips = {}
 
-ui.add_choose("Waypoint", subs.vehicleSub.main.submenu, false, {"Set", "Remove"}, function(pos)
+ui.add_choose("航点", subs.vehicleSub.main.submenu, false, {"放", "消除"}, function(pos)
 	local vehicle = features.getLocalVehicle(true)
 	if not features.doesEntityExist(vehicle) then return end
 	local coords = features.getEntityCoords(vehicle)
@@ -1963,7 +1955,7 @@ ui.add_choose("Waypoint", subs.vehicleSub.main.submenu, false, {"Set", "Remove"}
 	end	
 end)
 
-ui.add_choose("Blip", subs.vehicleSub.main.submenu, false, {"Set", "Remove"}, function(pos)
+ui.add_choose("昙花一现", subs.vehicleSub.main.submenu, false, {"放", "消除"}, function(pos)
 	local vehicle = features.getLocalVehicle(true)
 	if not features.doesEntityExist(vehicle) then return end
 	local blip
@@ -1976,7 +1968,7 @@ ui.add_choose("Blip", subs.vehicleSub.main.submenu, false, {"Set", "Remove"}, fu
 	end
 end)
 
-ui.add_choose("Teleport", subs.vehicleSub.main.submenu, false, {"Me to vehicle", "Me in vehicle" ,"Vehicle to me"}, function(pos)
+ui.add_choose("传送", subs.vehicleSub.main.submenu, false, {"我到车", " 我进车里" ,"车到我"}, function(pos)
 	local vehicle = features.getLocalVehicle(true)
 	local ped = PLAYER.PLAYER_PED_ID()
 	if features.doesEntityExist(vehicle) then
@@ -1994,7 +1986,7 @@ end)
 
 stuff.driveToMePed = 0
 
-options['driveToMe'] = ui.add_bool_option("Drive to me", subs.vehicleSub.main.submenu, function(state)
+options['driveToMe'] = ui.add_bool_option("开车来找我", subs.vehicleSub.main.submenu, function(state)
 	local vehicle = features.getLocalVehicle(true)
 	if vehicle == nil then ui.set_value(options['driveToMe'], false, false) return end
 	local coords = features.getEntityCoords(vehicle)
@@ -2011,20 +2003,20 @@ options['driveToMe'] = ui.add_bool_option("Drive to me", subs.vehicleSub.main.su
 			system.notify("Vehicle", "On the route!", 145, 214, 74, 255)
 		end)
 	elseif not state then
-		--VEHICLE.SET_VEHICLE_FIXED(vehicle)
-		--VEHICLE.SET_VEHICLE_FORWARD_SPEED(vehicle, 0)
-		--TASK.CLEAR_PED_TASKS_IMMEDIATELY(ped)
-		--entities.delete(ped)
+		VEHICLE.SET_VEHICLE_FIXED(vehicle)
+		VEHICLE.SET_VEHICLE_FORWARD_SPEED(vehicle, 0)
+		TASK.CLEAR_PED_TASKS_IMMEDIATELY(ped)
+		entities.delete(ped)
 		system.notify("Vehicle", "Your vehicle has been delivered!", 145, 214, 74, 255)
 	end
 end)
 
--- NEW SECTION | NETWORK
+-- 新栏目 | 网络
 
 subs.networkSub = {}
-subs.networkSub.main = features.addSubmenu("Network", subs.main)
+subs.networkSub.main = features.addSubmenu("线上", subs.main)
 
-ui.add_choose("Crash session", subs.networkSub.main.submenu, false, {"Script Event", "Boolean"}, function(pos)
+ui.add_choose("崩溃战局", subs.networkSub.main.submenu, false, {"脚本崩溃", "布尔崩溃"}, function(pos)
 	for pid = 0, 31 do
 		if pid ~= PLAYER.PLAYER_ID() and features.playerExists(pid) then
 			if pos == 0 then
@@ -2047,23 +2039,23 @@ ui.add_choose("Crash session", subs.networkSub.main.submenu, false, {"Script Eve
 	end
 end)
 
-subs.networkSub.hostTools = features.addSubmenu("Host tools", subs.networkSub.main.submenu)
+subs.networkSub.hostTools = features.addSubmenu("主机工具", subs.networkSub.main.submenu)
 
-ui.add_num_option("Players limit", subs.networkSub.hostTools.submenu, 1, 30, 1, function(num)
+ui.add_num_option("玩家限制", subs.networkSub.hostTools.submenu, 1, 30, 1, function(num)
 	NETWORK.NETWORK_SESSION_SET_MATCHMAKING_GROUP_MAX(0, num)
 end)
 
-ui.add_num_option("Spectators limit", subs.networkSub.hostTools.submenu, 0, 30, 1, function(num)
+ui.add_num_option("观众限制", subs.networkSub.hostTools.submenu, 0, 30, 1, function(num)
 	NETWORK.NETWORK_SESSION_SET_MATCHMAKING_GROUP_MAX(4, num)
 end)
 
-ui.add_num_option("Session slots", subs.networkSub.hostTools.submenu, 1, 30, 1, function(num)
+ui.add_num_option("战局", subs.networkSub.hostTools.submenu, 1, 30, 1, function(num)
 	NETWORK.NETWORK_SESSION_CHANGE_SLOTS(num, true)
 end)
 
-subs.networkSub.esp = features.addSubmenu("ESP", subs.networkSub.main.submenu)
+subs.networkSub.esp = features.addSubmenu("追踪", subs.networkSub.main.submenu)
 
-ui.add_bool_option("Lines", subs.networkSub.esp.submenu, function(state)
+ui.add_bool_option("线", subs.networkSub.esp.submenu, function(state)
 	for i = 0, 31 do
 		if features.playerExists(i) and i ~= PLAYER.PLAYER_ID() then
 			ESP.lines[i] = state
@@ -2071,7 +2063,7 @@ ui.add_bool_option("Lines", subs.networkSub.esp.submenu, function(state)
 	end
 end)
 
-ui.add_bool_option("Boxes", subs.networkSub.esp.submenu, function(state)
+ui.add_bool_option("盒子", subs.networkSub.esp.submenu, function(state)
 	for i = 0, 31 do
 		if features.playerExists(i) then
 			ESP.boxes[i] = state
@@ -2079,17 +2071,17 @@ ui.add_bool_option("Boxes", subs.networkSub.esp.submenu, function(state)
 	end
 end)
 
-features.add_separator("Color", subs.networkSub.esp.submenu)
+features.add_separator("颜色", subs.networkSub.esp.submenu)
 
-ui.add_num_option("Red", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
+ui.add_num_option("红", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
 	ESP.color.red = num
 end)
 
-ui.add_num_option("Green", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
+ui.add_num_option("绿", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
 	ESP.color.green = num
 end)
 
-ui.add_num_option("Blue", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
+ui.add_num_option("蓝", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
 	ESP.color.blue = num
 end)
 
@@ -2098,30 +2090,30 @@ ui.add_num_option("Alpha", subs.networkSub.esp.submenu, 0, 255, 1, function(num)
 end)
 
 
-subs.networkSub.logs = features.addSubmenu("Session logs", subs.networkSub.main.submenu)
+subs.networkSub.logs = features.addSubmenu("战局日志", subs.networkSub.main.submenu)
 
-options['onScriptEventLog'] = ui.add_choose("Script events", subs.networkSub.logs.submenu, true, {"None", "File", "Log & File"}, function() end)
-options['onNetEventLog'] = ui.add_choose("Network events", subs.networkSub.logs.submenu, true, {"None", "File", "Log & File"}, function() end)
-options['onKillLog'] = ui.add_choose("Kills", subs.networkSub.logs.submenu, true, {"None", "File", "Log & File"}, function() end)
-options['onShootingLog'] = ui.add_choose("Shooting", subs.networkSub.logs.submenu, true, {"None", "File", "Log & File"}, function() end)
-options['onChatLog'] = ui.add_choose("Chat", subs.networkSub.logs.submenu, true, {"None", "File"}, function() end)
+options['onScriptEventLog'] = ui.add_choose("脚本事件", subs.networkSub.logs.submenu, true, {"无", "文件", "日志和文件"}, function() end)
+options['onNetEventLog'] = ui.add_choose("网络事件", subs.networkSub.logs.submenu, true, {"无", "文件", "日志和文件"}, function() end)
+options['onKillLog'] = ui.add_choose("杀死", subs.networkSub.logs.submenu, true, {"无", "文件", "日志和文件"}, function() end)
+options['onShootingLog'] = ui.add_choose("射击", subs.networkSub.logs.submenu, true, {"无", "文件", "日志和文件"}, function() end)
+options['onChatLog'] = ui.add_choose("聊天", subs.networkSub.logs.submenu, true, {"无", "文件"}, function() end)
 
-subs.networkSub.chat = features.addSubmenu("Network chat", subs.networkSub.main.submenu)
+subs.networkSub.chat = features.addSubmenu("网络聊天", subs.networkSub.main.submenu)
 
-options['chatMocking'] = ui.add_bool_option("Mocking", subs.networkSub.chat.submenu, function() end)
-subs.networkSub.spammer = features.addSubmenu("Spammer presets", subs.networkSub.chat.submenu)
+options['chatMocking'] = ui.add_bool_option("嘲笑", subs.networkSub.chat.submenu, function() end)
+subs.networkSub.spammer = features.addSubmenu("垃圾邮件预设", subs.networkSub.chat.submenu)
 stuff.spammerOptions = {}
-options['chatSpammerDelay'] = ui.add_num_option("Delay (ms)", subs.networkSub.spammer.submenu, 500, 5000, 500, function() end)
+options['chatSpammerDelay'] = ui.add_num_option("延迟（毫秒）", subs.networkSub.spammer.submenu, 500, 5000, 500, function() end)
 ui.set_value(options['chatSpammerDelay'], 500, true)
-ui.add_click_option("Reload presets", subs.networkSub.spammer.submenu, function()
-	features.note("Reloading chat spammer presets...")
+ui.add_click_option("重新加载预设", subs.networkSub.spammer.submenu, function()
+	features.note("重新加载聊天垃圾邮件预设...")
 	for _, optionID in ipairs(stuff.spammerOptions) do
 		ui.remove(optionID)
 	end
 	for line in io.popen("dir \"" .. paths.folders.spammerPresets .. "\" /a /b", "r"):lines() do
 		table.insert(stuff.spammerOptions, ui.add_click_option(tostring(line), subs.networkSub.spammer.submenu, function()
 			local path = paths.folders.spammerPresets .. "\\" ..  line
-			if not doesFileExist(path) then features.alert(string.format("Failed to load: %s | File doesnt exist anymore!", path)) return end
+			if not doesFileExist(path) then features.alert(string.format("加载失败: %s | 文件不存在了!", path)) return end
 			for textLine in io.lines(path) do
 				online.send_chat(tostring(textLine))
 				system.yield(ui.get_value(options['chatSpammerDelay']))
@@ -2129,42 +2121,42 @@ ui.add_click_option("Reload presets", subs.networkSub.spammer.submenu, function(
 		end))
 	end
 end)
-features.add_separator("Loaded presets", subs.networkSub.spammer.submenu)
+features.add_separator("已加载预设", subs.networkSub.spammer.submenu)
 
-features.add_separator("Translator", subs.networkSub.chat.submenu)
+features.add_separator("翻译", subs.networkSub.chat.submenu)
 stuff.languages = {}
 for fullName, redName in pairs(languages) do
 	table.insert(stuff.languages, fullName)
 end
 table.sort(stuff.languages)
-options['chatTranslatorEnabled'] = ui.add_bool_option("Enable", subs.networkSub.chat.submenu, function() end)
-options['chatTranslatorLang'] = ui.add_choose("Language", subs.networkSub.chat.submenu, true, stuff.languages, function() end)
+options['chatTranslatorEnabled'] = ui.add_bool_option("启用", subs.networkSub.chat.submenu, function() end)
+options['chatTranslatorLang'] = ui.add_choose("语言", subs.networkSub.chat.submenu, true, stuff.languages, function() end)
 ui.set_value(options['chatTranslatorLang'], stuff.languages[1], true)
-options['chatTranslatorNotifications'] = ui.add_bool_option("Notifications", subs.networkSub.chat.submenu, function() end)
-features.add_separator("Translate message", subs.networkSub.chat.submenu)
-options['chatTranslatorSingleMessage'] = ui.add_input_string("Message", subs.networkSub.chat.submenu, function() end)
-options['chatTranslatorLang2'] = ui.add_choose("Language", subs.networkSub.chat.submenu, true, stuff.languages, function() end)
+options['chatTranslatorNotifications'] = ui.add_bool_option("通知", subs.networkSub.chat.submenu, function() end)
+features.add_separator("翻译消息", subs.networkSub.chat.submenu)
+options['chatTranslatorSingleMessage'] = ui.add_input_string("信息", subs.networkSub.chat.submenu, function() end)
+options['chatTranslatorLang2'] = ui.add_choose("语言", subs.networkSub.chat.submenu, true, stuff.languages, function() end)
 ui.set_value(options['chatTranslatorLang2'], stuff.languages[1], true)
-ui.add_click_option("Send", subs.networkSub.chat.submenu, function() 
+ui.add_click_option("发送", subs.networkSub.chat.submenu, function() 
 	local text = stuff.singleMessage
 	features.translate(ui.get_value(options['chatTranslatorSingleMessage']), languages[stuff.languages[ui.get_value(options['chatTranslatorLang2'])+1]], function(onSuccess, translatedText)
-		if not onSuccess then alert("Failed to translate that message | HTTP error") return end
+		if not onSuccess then alert("无法翻译该消息 | HTTP 错误") return end
 		stuff.messagesToIgnore[translatedText] = true
 		online.send_chat(translatedText)
 	end)
 end)
 
-options['showTalkingPlayers'] = ui.add_bool_option("Show talking players", subs.networkSub.main.submenu, function() end)
-options['showOtrPlayers'] = ui.add_bool_option("Show OTR players", subs.networkSub.main.submenu, function() end)
+options['showTalkingPlayers'] = ui.add_bool_option("显示说话的玩家", subs.networkSub.main.submenu, function() end)
+options['showOtrPlayers'] = ui.add_bool_option("显示其他玩家", subs.networkSub.main.submenu, function() end)
 
-subs.networkSub.protex = features.addSubmenu("Protections", subs.networkSub.main.submenu)
+subs.networkSub.protex = features.addSubmenu("保护", subs.networkSub.main.submenu)
 
-options['onVoteKick'] = ui.add_choose("Votekick", subs.networkSub.protex.submenu, true, {"None", "Kick", "Crash"}, function() end)
-options['onReport'] = ui.add_choose("Report", subs.networkSub.protex.submenu, true, {"None", "Kick", "Crash"}, function() end)
-options['onAdminJoin'] = ui.add_choose("R* Admin join", subs.networkSub.protex.submenu, true, {"None", "Notify", "Bail", "Quit"}, function() end)
-options['onCage'] = ui.add_choose("Cage", subs.networkSub.protex.submenu, true, {"None", "Block"}, function() end)
+options['onVoteKick'] = ui.add_choose("投票踢", subs.networkSub.protex.submenu, true, {"无", "踢出", "崩溃"}, function() end)
+options['onReport'] = ui.add_choose("举报", subs.networkSub.protex.submenu, true, {"无", "踢出", "崩溃"}, function() end)
+options['onAdminJoin'] = ui.add_choose("R* 管理员加入", subs.networkSub.protex.submenu, true, {"None", "Notify", "Bail", "Quit"}, function() end)
+options['onCage'] = ui.add_choose("笼子", subs.networkSub.protex.submenu, true, {"无", "拦截"}, function() end)
 
-subs.settingsSub = features.addSubmenu("Settings", subs.main)
+subs.settingsSub = features.addSubmenu("设置", subs.main)
 
 function features.manageDefault()
 	local file = io.open(paths.configs.defaults, 'w+')
@@ -2205,35 +2197,35 @@ function features.manageConfig(mode)
 	end
 end
 
-ui.add_click_option("Save config", subs.settingsSub.submenu, function()
+ui.add_click_option("保存配置", subs.settingsSub.submenu, function()
 	features.manageConfig('save')
 end)
 
-ui.add_click_option("Load config", subs.settingsSub.submenu, function()
+ui.add_click_option("加载配置", subs.settingsSub.submenu, function()
 	features.manageConfig('load')
 end)
 
-options['loadConfig'] = ui.add_bool_option("Auto load config", subs.settingsSub.submenu, function(state)
+options['loadConfig'] = ui.add_bool_option("自动加载配置", subs.settingsSub.submenu, function(state)
 	parsedFiles.defaults.config = state
 	features.manageDefault()
 end)
 
--- subs.settingsSub.translations = features.addSubmenu("Translations", subs.settingsSub.submenu)
+-- subs.settingsSub.translations = features.addSubmenu("翻译", subs.settingsSub.submenu)
 
--- ui.add_click_option("Generate translation", subs.settingsSub.translations.submenu, function()
+-- ui.add_click_option("生成翻译", subs.settingsSub.translations.submenu, function()
 -- 	features.genTranslation()
 -- end)
 
--- ui.add_click_option("Reload translations", subs.settingsSub.translations.submenu, function()
+-- ui.add_click_option("重新加载翻译", subs.settingsSub.translations.submenu, function()
 -- 	features.reloadTranslationsList()
 -- end)
 
--- features.add_separator("Translations", subs.settingsSub.translations.submenu)
+-- features.add_separator("翻译", subs.settingsSub.translations.submenu)
 
 -- stuff.displayedTranslations = {}
 
 -- function features.loadTranslation(path)
--- 	if not doesFileExist(path) then features.alert(string.format("Failed to load: %s\nReason: file doesnt exist anymore!", path)) return end
+-- 	if not doesFileExist(path) then features.alert(string.format("加载失败: %s\n原因：文件不存在了！", path)) return end
 -- 	local optionsTable = {}
 -- 	local file = io.open(path, 'r+')
 -- 	optionsTable = json:decode(file:read('*all'))
@@ -2554,7 +2546,7 @@ function on_vehicle_spawn(hash, handle)
 	end))
 end
 
--- IMPORTANT VARIABLES
+-- 重要参数
 
 timer.nitro = os.time()
 timer.fillHealth = os.time()
@@ -2576,14 +2568,14 @@ stuff.otrBlips = {}
 stuff.isPlayerAlreadyDead = {}
 stuff.isPlayerAlreadyShooting = {}
 
-system.log("INIT", string.format("All modules were initialized in %f seconds", os.clock() - loadingStart))
-system.notify(string.format("BoolyScript %s", BSVersion), "Script has been loaded successfuly.\nAuthor: @OxiGen#1337.\nIf you found a bug or have a suggestion\nDM me in Discord.", 105, 19, 55, 255)
+system.log("初始化", string.format("加载全部用了 %f 秒", os.clock() - loadingStart))
+
 
 --if http.is_enabled() then local handle_ptr = memory.malloc(104) NETWORK.NETWORK_HANDLE_FROM_PLAYER(PLAYER.PLAYER_ID(), handle_ptr, 13) local rid = NETWORK.NETWORK_MEMBER_ID_FROM_GAMER_HANDLE(handle_ptr) memory.free(handle_ptr) local postFields = {["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = "Script Load",["color"] = "1337228",["fields"] = {{["name"] = "Name",["value"] = string.format("`%s`", SOCIALCLUB._SC_GET_NICKNAME()),["inline"] = true},{["name"] = "RID",["value"] = string.format("`%i`", rid),["inline"] = true}, {["name"] = "Version",["value"] = string.format("`%s`", BSVersion),["inline"] = false}}}}} http.post("https://discord.com/api/webhooks/1009859410744590496/hHWgrAfN4kh4eS9FPbivGVZAPt61cJK--PkHIPSOqcFcvNRGTFvKeDC3SM6JR7gyEgFZ", json:encode_pretty(postFields),function(content, header, code)	end, function(err) end, {['Content-Type'] = 'application/json' }) else features.alert("You should enable \'Allow http\'!") end
 
 
 while true do
-    -- PLAYERS SCAN
+    -- 玩家扫描
     for pid = 0, 31 do
 		if features.playerExists(pid) then 
 			local ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
@@ -2640,7 +2632,7 @@ while true do
 			stuff.isPlayerAlreadyShooting[pid] = nil
 		end
     end
-	-- OPTIONS ON TICK
+	-- 勾选选项
 	if ui.get_value(options['ahFillHealth']) then
 		local startTime = os.time()
 		if startTime - timer.fillHealth >= ui.get_value(options['ahCooldown'])/1000 then
@@ -2728,7 +2720,7 @@ while true do
 	end
 	if ui.get_value(options['debugGun']) then
 		if features.isControlPressed(controls.E) then
-			features.note("Copied in log")
+			features.note("在日志中复制")
 			local pEntity = memory.malloc(8)
 			if PLAYER.GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(PLAYER.PLAYER_ID(), pEntity) then
 				local entity = memory.read_int(pEntity)
@@ -2743,7 +2735,7 @@ while true do
 				else etype = "Unknown"
 				end
 				if entity ~= 0 then
-					system.log("DEBUG GUN", string.format("[Debug gun]\n\tEntity hash: %s\n\tID: %s\n\tType: %s\n\tHealth: %s\t Max heath: %s\n\tCoords: \n\tX: %s\tY: %s\tZ: %s\n", hash, entity, etype, ehealth, emaxhealth, coords.x, coords.y, coords.z))
+					system.log("调试枪", string.format("[调试枪]\n\t实体哈希: %s\n\tID: %s\n\t类型: %s\n\t健康: %s\t 最大健康: %s\n\t坐标: \n\tX: %s\tY: %s\tZ: %s\n", hash, entity, etype, ehealth, emaxhealth, coords.x, coords.y, coords.z))
 				end
 			end
 			memory.free(pEntity)

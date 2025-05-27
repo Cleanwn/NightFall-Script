@@ -160,12 +160,12 @@ function utils.check_files()
 	system.log("Imagined Menu", "Checking files...")
 	local missing = {}
 	local function exists(file)
-	      local ok, err, code = rename(file, file)
-	      if not ok and code == 13 then
+	    local ok, err, code = rename(file, file)
+	    if not ok and code == 13 then
 	        return true
-	      end
-	      return ok, err
-	      end
+	    end
+	    return ok, err
+	end
 
 	for _, v in pairs(files)
 	do

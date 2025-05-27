@@ -74,9 +74,7 @@
       "b": 255,
       "g": 168,
       "r": 0
-    },
-    "IsTutorialCompleted": true,
-    "Translation": "english.json"
+    }
   },
   "Misc": {
     "CrosshairBorderColor": {
@@ -92,14 +90,10 @@
       "r": 255
     }
   },
-  "Self": {
-    "NoClipMultiplier": 10
-  },
+  "Self": [],
   "Session": [],
   "Teleport": [],
   "Vehicle": [],
   "Weapons": [],
-  "World": {
-    "ClearAreaDistance": 100
-  }
+  "World": []
 }
