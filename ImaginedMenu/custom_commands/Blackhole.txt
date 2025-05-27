@@ -1,0 +1,10 @@
+Desc: Quick preset for black hole
+blholevehs on
+blholepeds on
+blholeobjects off
+blholeforce 1
+blholeself
+blholesuck on
+showblhole on
+blholedist 2000
+blhole on

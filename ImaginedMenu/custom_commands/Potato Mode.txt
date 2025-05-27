@@ -1,0 +1,2 @@
+Desc: Makes your game run in potato mode
+lodscale 0

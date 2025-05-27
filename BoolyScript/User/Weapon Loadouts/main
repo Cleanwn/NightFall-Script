@@ -1,0 +1,229 @@
+{
+  "GADGET_PARACHUTE": {
+    "Components": [],
+    "Hash": 4222310262,
+    "Name": "WT_PARA",
+    "TintIndex": 0
+  },
+  "WEAPON_ASSAULTRIFLE_MK2": {
+    "Components": {
+      "WCT_BARR2": {
+        "Hash": 1447477866,
+        "Name": "WCT_BARR2"
+      },
+      "WCT_CLIP2": {
+        "Hash": 3509242479,
+        "Name": "WCT_CLIP2"
+      },
+      "WCT_FLASH": {
+        "Hash": 2076495324,
+        "Name": "WCT_FLASH"
+      },
+      "WCT_GRIP": {
+        "Hash": 2640679034,
+        "Name": "WCT_GRIP"
+      },
+      "WCT_HOLO": {
+        "Hash": 1108334355,
+        "Name": "WCT_HOLO"
+      },
+      "WCT_SUPP": {
+        "Hash": 2805810788,
+        "Name": "WCT_SUPP"
+      }
+    },
+    "Hash": 961495388,
+    "Name": "WT_RIFLE_ASL2",
+    "TintIndex": 5
+  },
+  "WEAPON_BZGAS": {
+    "Components": [],
+    "Hash": 2694266206,
+    "Name": "WT_BZGAS",
+    "TintIndex": 0
+  },
+  "WEAPON_COMBATPISTOL": {
+    "Components": {
+      "WCT_CLIP1": {
+        "Hash": 119648377,
+        "Name": "WCT_CLIP1"
+      },
+      "WCT_FLASH": {
+        "Hash": 899381934,
+        "Name": "WCT_FLASH"
+      },
+      "WCT_SUPP": {
+        "Hash": 3271853210,
+        "Name": "WCT_SUPP"
+      }
+    },
+    "Hash": 1593441988,
+    "Name": "WT_PIST_CBT",
+    "TintIndex": 0
+  },
+  "WEAPON_FLARE": {
+    "Components": [],
+    "Hash": 1233104067,
+    "Name": "WT_FLARE",
+    "TintIndex": 0
+  },
+  "WEAPON_GRENADE": {
+    "Components": [],
+    "Hash": 2481070269,
+    "Name": "WT_GNADE",
+    "TintIndex": 0
+  },
+  "WEAPON_HEAVYPISTOL": {
+    "Components": {
+      "WCT_CLIP1": {
+        "Hash": 222992026,
+        "Name": "WCT_CLIP1"
+      },
+      "WCT_FLASH": {
+        "Hash": 899381934,
+        "Name": "WCT_FLASH"
+      }
+    },
+    "Hash": 3523564046,
+    "Name": "WT_HVYPISTOL",
+    "TintIndex": 0
+  },
+  "WEAPON_HEAVYSNIPER_MK2": {
+    "Components": {
+      "WCT_BARR2": {
+        "Hash": 277524638,
+        "Name": "WCT_BARR2"
+      },
+      "WCT_CLIP2": {
+        "Hash": 752418717,
+        "Name": "WCT_CLIP2"
+      },
+      "WCT_MUZZ": {
+        "Hash": 1764221345,
+        "Name": "WCT_MUZZ"
+      },
+      "WCT_SCOPE_TH": {
+        "Hash": 776198721,
+        "Name": "WCT_SCOPE_TH"
+      }
+    },
+    "Hash": 177293209,
+    "Name": "WT_SNIP_HVY2",
+    "TintIndex": 17
+  },
+  "WEAPON_HOMINGLAUNCHER": {
+    "Components": [],
+    "Hash": 1672152130,
+    "Name": "WT_HOMLNCH",
+    "TintIndex": 1
+  },
+  "WEAPON_KNIFE": {
+    "Components": [],
+    "Hash": 2578778090,
+    "Name": "WT_KNIFE",
+    "TintIndex": 1
+  },
+  "WEAPON_MARKSMANRIFLE_MK2": {
+    "Components": {
+      "WCT_BARR2": {
+        "Hash": 1748450780,
+        "Name": "WCT_BARR2"
+      },
+      "WCT_CLIP2": {
+        "Hash": 3872379306,
+        "Name": "WCT_CLIP2"
+      },
+      "WCT_GRIP": {
+        "Hash": 2640679034,
+        "Name": "WCT_GRIP"
+      },
+      "WCT_SCOPE_LRG2": {
+        "Hash": 1528590652,
+        "Name": "WCT_SCOPE_LRG2"
+      },
+      "WCT_SUPP": {
+        "Hash": 2205435306,
+        "Name": "WCT_SUPP"
+      }
+    },
+    "Hash": 1785463520,
+    "Name": "WT_MKRIFLE2",
+    "TintIndex": 9
+  },
+  "WEAPON_MG": {
+    "Components": {
+      "WCT_CLIP2": {
+        "Hash": 2182449991,
+        "Name": "WCT_CLIP2"
+      },
+      "WCT_SCOPE_SML": {
+        "Hash": 1006677997,
+        "Name": "WCT_SCOPE_SML"
+      }
+    },
+    "Hash": 2634544996,
+    "Name": "WT_MG",
+    "TintIndex": 1
+  },
+  "WEAPON_MINIGUN": {
+    "Components": [],
+    "Hash": 1119849093,
+    "Name": "WT_MINIGUN",
+    "TintIndex": 1
+  },
+  "WEAPON_RPG": {
+    "Components": [],
+    "Hash": 2982836145,
+    "Name": "WT_RPG",
+    "TintIndex": 5
+  },
+  "WEAPON_SPECIALCARBINE_MK2": {
+    "Components": {
+      "WCT_BARR2": {
+        "Hash": 4185880635,
+        "Name": "WCT_BARR2"
+      },
+      "WCT_CLIP2": {
+        "Hash": 3726614828,
+        "Name": "WCT_CLIP2"
+      },
+      "WCT_FLASH": {
+        "Hash": 2076495324,
+        "Name": "WCT_FLASH"
+      },
+      "WCT_GRIP": {
+        "Hash": 2640679034,
+        "Name": "WCT_GRIP"
+      },
+      "WCT_HOLO": {
+        "Hash": 1108334355,
+        "Name": "WCT_HOLO"
+      },
+      "WCT_MUZZ": {
+        "Hash": 3968886988,
+        "Name": "WCT_MUZZ"
+      }
+    },
+    "Hash": 2526821735,
+    "Name": "WT_SPCARBINE2",
+    "TintIndex": 5
+  },
+  "WEAPON_STICKYBOMB": {
+    "Components": [],
+    "Hash": 741814745,
+    "Name": "WT_GNADE_STK",
+    "TintIndex": 0
+  },
+  "WEAPON_STINGER": {
+    "Components": [],
+    "Hash": 1752584910,
+    "Name": "WT_RPG",
+    "TintIndex": 0
+  },
+  "WEAPON_UNARMED": {
+    "Components": [],
+    "Hash": 2725352035,
+    "Name": "WT_UNARMED",
+    "TintIndex": 0
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "Commands": [],
+  "Controls": [],
+  "Dev": [],
+  "General": {
+    "HudColorARspeedo": {
+      "a": 168,
+      "b": 98,
+      "g": 255,
+      "r": 0
+    },
+    "HudColorAimLaser": {
+      "a": 50,
+      "b": 0,
+      "g": 255,
+      "r": 0
+    },
+    "HudColorClearArea": {
+      "a": 128,
+      "b": 0,
+      "g": 255,
+      "r": 0
+    },
+    "HudColorFriend": {
+      "a": 255,
+      "b": 0,
+      "g": 128,
+      "r": 0
+    },
+    "HudColorModder": {
+      "a": 255,
+      "b": 0,
+      "g": 128,
+      "r": 255
+    },
+    "HudColorNotifyError": {
+      "a": 255,
+      "b": 0,
+      "g": 0,
+      "r": 168
+    },
+    "HudColorNotifyNormal": {
+      "a": 255,
+      "b": 255,
+      "g": 128,
+      "r": 0
+    },
+    "HudColorNotifySuccess": {
+      "a": 255,
+      "b": 0,
+      "g": 168,
+      "r": 0
+    },
+    "HudColorNotifyWarning": {
+      "a": 255,
+      "b": 0,
+      "g": 0,
+      "r": 255
+    },
+    "HudColorOptionInfo": {
+      "a": 255,
+      "b": 255,
+      "g": 255,
+      "r": 255
+    },
+    "HudColorSelf": {
+      "a": 255,
+      "b": 255,
+      "g": 0,
+      "r": 128
+    },
+    "HudColorStranger": {
+      "a": 255,
+      "b": 255,
+      "g": 168,
+      "r": 0
+    },
+    "IsTutorialCompleted": true,
+    "Translation": "english.json"
+  },
+  "Misc": {
+    "CrosshairBorderColor": {
+      "a": 255,
+      "b": 0,
+      "g": 0,
+      "r": 0
+    },
+    "CrosshairColor": {
+      "a": 255,
+      "b": 255,
+      "g": 0,
+      "r": 255
+    }
+  },
+  "Self": {
+    "NoClipMultiplier": 10
+  },
+  "Session": [],
+  "Teleport": [],
+  "Vehicle": [],
+  "Weapons": [],
+  "World": {
+    "ClearAreaDistance": 100
+  }
+}
